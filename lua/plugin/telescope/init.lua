@@ -1,4 +1,4 @@
-return {
+local M = {
   {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
@@ -10,3 +10,5 @@ return {
   },
   { 'nvim-telescope/telescope-file-browser.nvim' },
 }
+
+return M

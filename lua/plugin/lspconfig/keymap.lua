@@ -1,6 +1,7 @@
-local keymap = vim.keymap
+local diagnostic = vim.diagnostic
+local set = vim.keymap.set
 
-keymap.set('n', '<Space>e', vim.diagnostic.open_float)
-keymap.set('n', '<Space>q', vim.diagnostic.setloclist)
-keymap.set('n', '[d', vim.diagnostic.goto_prev)
-keymap.set('n', ']d', vim.diagnostic.goto_next)
+set('n', '<Space>e', diagnostic.open_float)
+set('n', '<Space>q', diagnostic.setloclist)
+set('n', '[d', diagnostic.goto_prev)
+set('n', ']d', diagnostic.goto_next)
