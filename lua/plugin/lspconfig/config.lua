@@ -1,5 +1,4 @@
 local lsp = require('lspconfig')
-local coq = require('coq')
 
 local servers = {
   clangd = require('lsp.config.clangd'),
@@ -8,5 +7,5 @@ local servers = {
 }
 
 for server, config in pairs(servers) do
-  lsp[server].setup(coq.lsp_ensure_capabilities(config))
+  lsp[server].setup(config)
 end
