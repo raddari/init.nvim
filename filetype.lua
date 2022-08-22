@@ -5,7 +5,7 @@ local extension = {
 
 local filename = {
   ['.env'] = 'config',
-  ['tmux.conf'] = { 'tmux' },
+  ['tmux.conf'] = 'tmux',
 }
 
 vim.filetype.add({
