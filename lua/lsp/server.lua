@@ -1,4 +1,5 @@
 local lsp = vim.lsp.buf
+-- stylua: ignore
 local lsp_keymap = {
   { 'n', 'gD', lsp.declaration },
   { 'n', 'gd', lsp.definition },

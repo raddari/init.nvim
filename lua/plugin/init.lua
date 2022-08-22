@@ -4,7 +4,12 @@ local install_path = fn.stdpath('data') .. '/site/pack/packer/opt/packer.nvim'
 local packer_bootstrap = (function()
   if fn.empty(fn.glob(install_path)) > 0 then
     return fn.system({
-      'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path
+      'git',
+      'clone',
+      '--depth',
+      '1',
+      'https://github.com/wbthomason/packer.nvim',
+      install_path,
     })
   end
 end)()
@@ -18,6 +23,7 @@ local plugins = {
   require('plugin.lspconfig'),
   require('plugin.lualine'),
   require('plugin.mason'),
+  require('plugin.null-ls'),
   require('plugin.telescope'),
   require('plugin.themes'),
   require('plugin.treesitter'),
