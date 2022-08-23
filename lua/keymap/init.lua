@@ -1,1 +1,1 @@
-require('keymap.nvim')
+require('keymap.builtin')
