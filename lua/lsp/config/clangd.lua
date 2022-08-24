@@ -3,7 +3,6 @@ local config = {}
 config.cmd = {
   'clangd',
   '--completion-style=bundled',
-  '--cross-file-rename',
   '--header-insertion=never',
 }
 
@@ -14,4 +13,4 @@ config.init_options = {
   semanticHighlighting = true,
 }
 
-return require('lsp.server').with(config)
+return config
