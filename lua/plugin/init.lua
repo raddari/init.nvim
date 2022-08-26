@@ -18,16 +18,23 @@ vim.cmd('packadd packer.nvim')
 
 local plugins = {
   require('plugin.clangd_extensions'),
+  require('plugin.cmp'),
+  require('plugin.dap'),
+  require('plugin.floaterm'),
   require('plugin.focus'),
   require('plugin.gitsigns'),
+  require('plugin.illuminate'),
   require('plugin.limelight'),
   require('plugin.lspconfig'),
   require('plugin.lualine'),
+  require('plugin.luasnip'),
   require('plugin.mason'),
   require('plugin.null-ls'),
+  require('plugin.rust-tools'),
   require('plugin.telescope'),
   require('plugin.themes'),
   require('plugin.treesitter'),
+  { 'rafamadriz/friendly-snippets' },
 }
 
 local packer = require('packer')
