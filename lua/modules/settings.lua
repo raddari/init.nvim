@@ -3,7 +3,14 @@ local opt = vim.opt
 
 g.mapleader = ','
 
-opt.completeopt = { 'menuone', 'noinsert', 'noselect' }
+opt.breakindent = true
+opt.completeopt:append({
+  'menuone',
+  'noinsert',
+  'noselect',
+})
+opt.confirm = true
+opt.cursorline = true
 opt.expandtab = true
 opt.fillchars:append({
   horiz = '━',
@@ -19,18 +26,20 @@ opt.ignorecase = true
 opt.joinspaces = true
 opt.laststatus = 3
 opt.list = true
+opt.mouse = ''
 opt.number = true
 opt.relativenumber = true
-opt.scrolloff = 4
+opt.scrolloff = 9
 opt.shiftround = true
 opt.shiftwidth = 2
-opt.sidescrolloff = 8
+opt.showmatch = true
+opt.sidescrolloff = 9
 opt.signcolumn = 'yes:1'
 opt.smartcase = true
-opt.smartindent = true
 opt.splitbelow = true
 opt.splitright = true
 opt.swapfile = true
 opt.tabstop = 2
 opt.termguicolors = true
-opt.wildmode = { 'list', 'longest' }
+opt.updatetime = 500
+opt.wildmode = { 'list', 'longest', 'full' }
