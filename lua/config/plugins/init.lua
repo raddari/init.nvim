@@ -7,6 +7,7 @@ local plugins = {
   -- then the colorscheme
   require('config.theme.plugins').init(current_theme),
   -- now the rest
+  require('config.plugins.gitsigns'),
   require('config.plugins.lualine'),
   require('config.plugins.telescope'),
   require('config.plugins.treesitter'),
