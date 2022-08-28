@@ -8,6 +8,7 @@ local plugins = {
   require('config.theme.plugins').init(current_theme),
   -- now the rest
   require('config.plugins.lualine'),
+  require('config.plugins.telescope'),
   require('config.plugins.treesitter'),
 }
 
