@@ -17,9 +17,9 @@ end)()
 vim.cmd('packadd packer.nvim')
 
 local packer = require('packer')
-local config = require('modules.plugins.packer.config')
-packer.init(config.init)
-packer.startup(config.use(require('modules.plugins')))
+local setup = require('config.plugins.packer.setup')
+packer.init(setup.init)
+packer.startup(setup.use(require('config.plugins')))
 
 if first_install then
   require('packer').sync()

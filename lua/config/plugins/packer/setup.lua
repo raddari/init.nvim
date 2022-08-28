@@ -13,9 +13,8 @@ M.init = {
     enable = true,
     threshold = 1,
   },
-  compile_path = vim.fn.stdpath('config') .. '/lua/modules/compiled.lua',
-  auto_clean = true,
-  compile_on_sync = true,
+  compile_path = vim.fn.stdpath('config') .. '/lua/config/compiled.lua',
+  autoremove = true,
 }
 
 M.use = function(plugins)
