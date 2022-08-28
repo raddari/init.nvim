@@ -32,7 +32,6 @@ opt.relativenumber = true
 opt.scrolloff = 9
 opt.shiftround = true
 opt.shiftwidth = 2
-opt.showmatch = true
 opt.sidescrolloff = 9
 opt.signcolumn = 'yes:1'
 opt.smartcase = true
