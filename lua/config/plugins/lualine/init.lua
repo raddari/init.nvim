@@ -4,4 +4,5 @@ return {
   config = function()
     require('config.plugins.lualine.setup')
   end,
+  after = require('config.settings.theme').current_theme,
 }
