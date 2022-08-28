@@ -1,4 +1,4 @@
-local theme = require('config.settings.theme').current_theme
+local theme = require('config.settings.user').theme
 local supported_themes = require('config.theme.plugins').supported_themes
 local colors = {}
 

@@ -1,11 +1,11 @@
-local current_theme = require('config.settings.theme').current_theme
+local theme = require('config.settings.user').theme
 
 local plugins = {
   -- useful prereqs
   { 'lewis6991/impatient.nvim' },
   { 'nvim-lua/plenary.nvim' },
   -- then the colorscheme
-  require('config.theme.plugins').init(current_theme),
+  require('config.theme.plugins').init(theme),
   -- now the rest
   require('config.plugins.gitsigns'),
   require('config.plugins.lualine'),

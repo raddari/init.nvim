@@ -1,5 +1,6 @@
-local M = {}
+local config = {}
 
-M.current_theme = 'kanagawa'
+config.theme = 'kanagawa'
+config.border = 'single'
 
-return M
+return config
