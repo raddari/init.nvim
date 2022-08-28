@@ -16,6 +16,7 @@ M.config = function()
       which_key = true,
     },
   })
+  vim.cmd('colorscheme catppuccin')
 end
 
 M.colors = function()

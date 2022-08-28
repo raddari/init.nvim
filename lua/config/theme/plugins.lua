@@ -1,41 +1,24 @@
 local M = {}
 
 M.supported_themes = {
-  'catppuccin',
-  'kanagawa',
-  'tokyonight',
+  catppuccin = 'catppuccin/nvim',
+  kanagawa = 'rebelot/kanagawa.nvim',
+  tokyonight = 'folke/tokyonight.nvim',
 }
 
 M.init = function(theme)
-  return {
-    {
-      'catppuccin/nvim',
-      as = 'catppuccin',
-      config = function()
-        require('config.theme.integrated.catppuccin').config()
-        vim.cmd('colorscheme catppuccin')
-      end,
-      disable = theme ~= 'catppuccin',
-    },
-    {
-      'rebelot/kanagawa.nvim',
-      as = 'kanagawa',
-      config = function()
-        require('config.theme.integrated.kanagawa').config()
-        vim.cmd('colorscheme kanagawa')
-      end,
-      disable = theme ~= 'kanagawa',
-    },
-    {
-      'folke/tokyonight.nvim',
-      as = 'tokyonight',
-      config = function()
-        require('config.theme.integrated.tokyonight').config()
-        vim.cmd('colorscheme tokyonight')
-      end,
-      disable = theme ~= 'tokyonight',
-    }
-  }
+  local packerspecs = {}
+  for name, spec in pairs(M.supported_themes) do
+    if type(spec) == 'string' then
+      local location = spec
+      spec = { location }
+    end
+    spec.as = spec.as or name
+    spec.config = spec.config or require(('config.theme.integrated.%s'):format(name)).config
+    spec.disable = spec.disable or theme ~= name
+    table.insert(packerspecs, spec)
+  end
+  return packerspecs
 end
 
 return M

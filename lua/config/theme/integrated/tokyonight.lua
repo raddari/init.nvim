@@ -4,6 +4,8 @@ M.config = function()
   local g = vim.g
   g.tokyonight_italic_comments = false
   g.tokyonight_italic_keywords = false
+
+  vim.cmd('colorscheme tokyonight')
 end
 
 M.colors = function()

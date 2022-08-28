@@ -7,6 +7,7 @@ M.config = function()
     dimInactive = true,
     globalStatus = true,
   })
+  vim.cmd('colorscheme kanagawa')
 end
 
 M.colors = function()
