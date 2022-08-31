@@ -41,4 +41,54 @@ require('nvim-treesitter.configs').setup({
     highlight_definitions = { enable = true },
     highlight_current_scope = { enable = false },
   },
+  textobjects = {
+    select = {
+      enable = true,
+      lookahead = true,
+      keymaps = {
+        ['af'] = '@function.outer',
+        ['if'] = '@function.inner',
+        ['ac'] = '@class.outer',
+        ['ic'] = '@class.inner',
+      },
+      selection_modes = {
+        ['@parameter.outer'] = 'v', -- charwise
+        ['@function.outer'] = 'V', -- linewise
+        ['@class.outer'] = '<c-v>', -- blockwise
+      },
+      include_surrounding_whitespace = true,
+    },
+    move = {
+      enable = true,
+      set_jumps = true,
+      goto_next_start = {
+        [']m'] = '@function.outer',
+        [']]'] = '@class.outer',
+        [']p'] = '@parameter.outer',
+      },
+      goto_next_end = {
+        [']M'] = '@function.outer',
+        [']['] = '@class.outer',
+        [']P'] = '@parameter.outer',
+      },
+      goto_previous_start = {
+        ['[m'] = '@function.outer',
+        ['[['] = '@class.outer',
+        ['[p'] = '@parameter.outer',
+      },
+      goto_previous_end = {
+        ['[M'] = '@function.outer',
+        ['[]'] = '@class.outer',
+        ['[P'] = '@parameter.outer',
+      },
+    },
+    lsp_interop = {
+      enable = true,
+      border = 'none',
+      peek_definition_code = {
+        ['<Leader>df'] = '@function.outer',
+        ['<Leader>dF'] = '@class.outer',
+      },
+    },
+  },
 })
