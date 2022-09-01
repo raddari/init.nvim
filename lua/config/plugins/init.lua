@@ -20,6 +20,7 @@ local plugins = {
   require('config.plugins.mason'),
   require('config.plugins.mason-lspconfig'),
   require('config.plugins.null-ls'),
+  require('config.plugins.surround'),
   require('config.plugins.telescope'),
   require('config.plugins.treesitter'),
   require('config.plugins.twilight'),
