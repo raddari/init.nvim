@@ -23,6 +23,8 @@ config.server = {
 config.extensions = {
   inlay_hints = {
     only_current_line = true,
+    parameter_hints_prefix = ' ',
+    other_hints_prefix = ' ',
   },
   memory_usage = {
     border = 'none',

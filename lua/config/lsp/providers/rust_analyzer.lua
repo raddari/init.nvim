@@ -6,6 +6,8 @@ local config = {}
 config.tools = {
   inlay_hints = {
     only_current_line = true,
+    parameter_hints_prefix = ' ',
+    other_hints_prefix = ' ',
   },
 }
 
