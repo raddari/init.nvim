@@ -8,6 +8,7 @@ local plugins = {
   require('config.theme.plugins').init(theme),
   -- now the rest
   { 'mong8se/actually.nvim' },
+  require('config.plugins.dressing'),
   require('config.plugins.gitsigns'),
   require('config.plugins.lsp_signature'),
   require('config.plugins.lspconfig'),
