@@ -10,6 +10,7 @@ return {
     'windwp/nvim-ts-autotag',
     'JoosepAlviste/nvim-ts-context-commentstring',
     'nvim-treesitter/nvim-treesitter-refactor',
-    'nvim-treesitter/nvim-treesitter-textobjects',
+    -- TODO(raddari): see https://github.com/nvim-treesitter/nvim-treesitter-textobjects/issues/270
+    { 'nvim-treesitter/nvim-treesitter-textobjects', commit = '775c5db' },
   },
 }
