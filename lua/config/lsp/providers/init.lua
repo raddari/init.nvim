@@ -19,6 +19,7 @@ require('mason-lspconfig').setup_handlers({
     end)()
 
     config.on_attach = config.on_attach or default_config.on_attach
+    config.capabilities = config.capabilities or default_config.capabilities
     lspconfig[provider].setup(config)
   end,
 
