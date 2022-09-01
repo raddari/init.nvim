@@ -13,6 +13,7 @@ local plugins = {
   require('config.plugins.cmp-git'),
   require('config.plugins.dressing'),
   require('config.plugins.gitsigns'),
+  require('config.plugins.indent-blankline'),
   require('config.plugins.lsp_signature'),
   require('config.plugins.lspconfig'),
   require('config.plugins.lualine'),
