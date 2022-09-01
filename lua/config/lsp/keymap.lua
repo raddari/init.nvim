@@ -18,18 +18,24 @@ M.init = function(_, bufnr)
   set('n', '[g', diag.goto_prev)
   set('n', ']g', diag.goto_next)
   set('n', 'ge', diag.open_float)
-  set('n', '<Leader>ge', function() telescope.diagnostics({ bufnr = 0 }) end)
+  set('n', '<Leader>ge', function()
+    telescope.diagnostics({ bufnr = 0 })
+  end)
 
   set('n', 'K', lsp.buf.hover)
   set('n', '<Leader>ca', lsp.buf.code_action)
   set('v', '<Leader>ca', lsp.buf.range_code_action)
-  set('n', '<Leader>gf', function() lsp.buf.format({ buffer = bufnr }) end)
+  set('n', '<Leader>gf', function()
+    lsp.buf.format({ buffer = bufnr })
+  end)
   set('n', '<C-k>', lsp.buf.signature_help)
 
   set('n', '<Leader>we', telescope.diagnostics)
   set('n', '<Leader>wa', lsp.buf.add_workspace_folder)
   set('n', '<Leader>wd', lsp.buf.remove_workspace_folder)
-  set('n', '<Leader>wl', function() vim.notify(vim.inspect(lsp.buf.list_workspace_folders())) end)
+  set('n', '<Leader>wl', function()
+    vim.notify(vim.inspect(lsp.buf.list_workspace_folders()))
+  end)
 end
 
 return M
