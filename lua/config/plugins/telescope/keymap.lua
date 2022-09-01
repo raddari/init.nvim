@@ -1,12 +1,20 @@
-local telescope = require('telescope')
 local builtin = require('telescope.builtin')
-local ext = telescope.extensions
+local ext = require('telescope').extensions
 
-local set = vim.keymap.set
+local map = vim.keymap.set
 
-set('n', '<Leader>ff', builtin.git_files)
-set('n', '<Leader>fa', builtin.find_files)
-set('n', '<Leader>fg', builtin.live_grep)
-set('n', '<Leader>fb', builtin.buffers)
-set('n', '<Leader>fh', builtin.help_tags)
-set('n', '<Leader>t', ext.file_browser.file_browser)
+map('n', '<Leader>ff', builtin.git_files)
+map('n', '<Leader>fa', builtin.find_files)
+map('n', '<Leader>fg', builtin.live_grep)
+map('n', '<Leader>fb', builtin.buffers)
+map('n', '<Leader>fh', builtin.help_tags)
+map('n', '<Leader>fk', builtin.keymaps)
+map('n', '<Leader>fr', builtin.registers)
+map('n', '<Leader>fu', function()
+  builtin.symbols({ sources = { 'emoji', 'math' } })
+end)
+
+map('n', '<Leader>t', ext.file_browser.file_browser)
+map('n', '<Leader>fp', ext.packer.packer)
+map('n', '<Leader>fs', ext.luasnip.luasnip)
+map('n', '<Leader>fe', ext.env.env)
