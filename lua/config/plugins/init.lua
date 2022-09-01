@@ -16,6 +16,8 @@ local plugins = {
   require('config.plugins.null-ls'),
   require('config.plugins.telescope'),
   require('config.plugins.treesitter'),
+  require('config.plugins.twilight'),
+  require('config.plugins.zen-mode'),
 }
 
 return plugins
