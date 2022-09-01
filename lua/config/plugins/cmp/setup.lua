@@ -8,6 +8,9 @@ local has_words_before = function()
 end
 
 cmp.setup({
+  completion = {
+    autocomplete = false,
+  },
   enabled = function()
     local context = require('cmp.config.context')
     if vim.api.nvim_get_mode().mode == 'c' then
