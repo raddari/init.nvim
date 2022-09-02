@@ -21,3 +21,4 @@ map('n', '<Leader>t', ext.file_browser.file_browser, { desc = 'Open file browser
 map('n', '<Leader>fp', ext.packer.packer, { desc = 'Open packer plugin picker' })
 map('n', '<Leader>fs', ext.luasnip.luasnip, { desc = 'Open LuaSnip picker' })
 map('n', '<Leader>fe', ext.env.env, { desc = 'Open environment variables picker' })
+map('n', '<Leader>fn', ext.notify.notify, { desc = 'Open notification history' })

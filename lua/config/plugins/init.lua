@@ -19,6 +19,7 @@ local plugins = {
   require('config.plugins.lualine'),
   require('config.plugins.luasnip'),
   require('config.plugins.mason'),
+  require('config.plugins.notify'),
   require('config.plugins.null-ls'),
   require('config.plugins.surround'),
   require('config.plugins.telescope'),
