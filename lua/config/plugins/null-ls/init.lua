@@ -3,5 +3,4 @@ return {
   config = function()
     require('config.lsp.providers.null-ls')
   end,
-  after = 'nvim-lspconfig',
 }

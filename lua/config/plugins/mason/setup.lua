@@ -1,12 +1,10 @@
-local config = require('config.settings.user')
-
-require('mason').setup({
+require('mason.settings').set({
   ui = {
-    border = config.border,
+    border = 'single',
     icons = {
-      package_installed = '✔',
-      package_pending = '❕',
-      package_uninstalled = '❌',
+      package_installed = '✓',
+      package_pending = '↻',
+      package_uninstalled = '⤫',
     },
   },
 })

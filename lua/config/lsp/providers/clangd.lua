@@ -1,5 +1,3 @@
-local default = require('config.lsp.providers.default')
-
 local config = {}
 
 config.server = {
@@ -15,7 +13,7 @@ config.server = {
     semanticHighlighting = true,
   },
   on_attach = function(client, bufnr)
-    default.on_attach(client, bufnr)
+    require('config.lsp.keymap').init(client, bufnr)
     vim.keymap.set('n', '<Leader>gs', ':ClangdSwitchSourceHeader', { buffer = bufnr })
   end,
 }

@@ -7,18 +7,10 @@ local has_words_before = function()
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
 end
 
-cmp.setup({
+local config = {
   completion = {
     autocomplete = false,
   },
-  enabled = function()
-    local context = require('cmp.config.context')
-    if vim.api.nvim_get_mode().mode == 'c' then
-      return true
-    else
-      return not context.in_treesitter_capture('comment') and not context.in_syntax_group('Comment')
-    end
-  end,
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
@@ -80,6 +72,7 @@ cmp.setup({
     { name = 'nvim_lua' },
     { name = 'luasnip' },
     { name = 'buffer' },
+  }, {
     { name = 'path' },
   }),
   formatting = {
@@ -96,7 +89,9 @@ cmp.setup({
       return vim_item
     end,
   },
-})
+}
+
+cmp.setup(config)
 
 cmp.setup.cmdline('/', {
   mapping = cmp.mapping.preset.cmdline(),
@@ -126,5 +121,7 @@ cmp.setup.filetype('gitcommit', {
 })
 
 cmp.setup.filetype('TelescopePrompt', {
-  enabled = false,
+  enabled = function()
+    return false
+  end,
 })

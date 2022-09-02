@@ -1,5 +1,4 @@
 local null_ls = require('null-ls')
-local default = require('config.lsp.providers.default')
 
 local code_actions = null_ls.builtins.code_actions
 local diagnostics = null_ls.builtins.diagnostics
@@ -8,7 +7,9 @@ local hover = null_ls.builtins.hover
 local completion = null_ls.builtins.completion
 
 local config = {
-  on_attach = default.on_attach,
+  on_attach = function(client, bufnr)
+    require('config.lsp.keymap').init(client, bufnr)
+  end,
 }
 
 config.sources = {
