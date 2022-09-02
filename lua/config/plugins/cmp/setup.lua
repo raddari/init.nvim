@@ -57,12 +57,35 @@ local config = {
   }),
   window = {
     documentation = cmp.config.window.bordered({
-      border = 'single',
-      winhighlight = 'FloatBorder:FloatBorder,Normal:Normal',
+      border = 'none',
+      winhighlight = 'Normal:Background',
     }),
     completion = cmp.config.window.bordered({
       border = 'none',
+      -- TODO(raddari): create highlight groups
+      -- https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance#how-to-get-types-on-the-left-and-offset-the-menu
+      winhighlight = 'Normal:Background',
+      col_offset = -3,
+      side_padding = 0,
     }),
+  },
+  formatting = {
+    fields = { 'kind', 'abbr', 'menu' },
+    format = function(_, vim_item)
+      local icon = icons.kind_icons[vim_item.kind]
+      local kind = vim_item.kind
+
+      vim_item.kind = ' ' .. icon .. ' '
+      vim_item.menu = '    [' .. kind .. ']'
+
+      return vim_item
+    end,
+  },
+  view = {
+    entries = {
+      name = 'custom',
+      selection_order = 'near_cursor',
+    },
   },
   experimental = {
     ghost_text = true,
@@ -75,20 +98,6 @@ local config = {
   }, {
     { name = 'path' },
   }),
-  formatting = {
-    format = function(entry, vim_item)
-      -- kind icons
-      vim_item.kind = string.format('%s %s', icons.kind_icons[vim_item.kind], vim_item.kind)
-      vim_item.menu = ({
-        nvim_lsp = '[lsp]',
-        luasnip = '[snip]',
-        buffer = '[buf]',
-        path = '[path]',
-        nvim_lua = '[nvim]',
-      })[entry.source.name]
-      return vim_item
-    end,
-  },
 }
 
 cmp.setup(config)
