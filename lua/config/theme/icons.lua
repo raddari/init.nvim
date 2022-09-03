@@ -1,6 +1,8 @@
 local icons = {
   rounded_left_filled = '',
   rounded_right_filled = '',
+  rounded_left = '',
+  rounded_right = '',
   arrow_left_filled = '', -- e0b2
   arrow_right_filled = '', -- e0b0
   arrow_left = '', -- e0b3
