@@ -14,8 +14,3 @@ map('n', '<Leader>-', '<Cmd>split<CR>')
 
 -- util
 map('n', '<Leader>lo', '<Cmd>source %<CR>')
-
--- plugins
--- TODO(raddari): probably move these to their own file
-map('n', '<Leader>z', '<Cmd>Twilight<CR>')
-map('n', '<Leader>Z', '<Cmd>ZenMode<CR>')

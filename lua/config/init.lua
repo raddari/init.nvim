@@ -1,7 +1,7 @@
 local mods = {
   'config.settings',
   'config.compiled',
-  'config.plugins.packer',
+  'config.plugin-init',
 }
 
 for _, mod in ipairs(mods) do
