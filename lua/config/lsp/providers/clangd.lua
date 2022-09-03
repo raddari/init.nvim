@@ -5,6 +5,7 @@ config.server = {
     'clangd',
     '--completion-style=bundled',
     '--header-insertion=never',
+    '--offset-encoding=utf-16',
   },
   init_options = {
     clangdFileStatus = true,
