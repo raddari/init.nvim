@@ -1,5 +1,11 @@
 local map = vim.keymap.set
 
+-- gitsigns
+map('n', '<Leader>vb', '<Cmd>Gitsigns toggle_current_line_blame<CR>', { desc = 'Toggle line blame' })
+map('i', '<M-b>', '<Cmd>Gitsigns toggle_current_line_blame<CR>', { desc = 'Toggle line blame' })
+map('n', '<Leader>vd', '<Cmd>Gitsigns toggle_word_diff<CR>', { desc = 'Toggle word diff' })
+map('i', '<M-d>', '<Cmd>Gitsigns toggle_word_diff<CR>', { desc = 'Toggle word diff' })
+
 -- zen-mode/twilight
 map('n', '<Leader>z', '<Cmd>Twilight<CR>', { desc = 'Toggle Twilight' })
 map('n', '<Leader>Z', '<Cmd>ZenMode<CR>', { desc = 'Toggle Zen mode' })
