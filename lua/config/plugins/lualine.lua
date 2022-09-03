@@ -1,7 +1,15 @@
+local icons = require('config.theme.icons')
+
 require('lualine').setup({
   options = {
     theme = 'auto',
-    component_separators = { left = '', right = '' },
-    section_separators = { left = '', right = '' },
+    section_separators = {
+      left = icons.rounded_right_filled,
+      right = icons.rounded_left_filled,
+    },
+    component_separators = {
+      left = icons.arrow_right,
+      right = icons.arrow_left,
+    },
   },
 })
