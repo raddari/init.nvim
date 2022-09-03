@@ -196,6 +196,15 @@ local plugins = {
     requires = { 'kyazdani42/nvim-web-devicons' },
   },
 
+  -- debugging
+  {
+    'mfussenegger/nvim-dap',
+    config = function()
+      -- TODO: configure
+    end,
+  },
+  { 'Pocco81/dap-buddy.nvim' },
+
   -- peace and serenity
   {
     'folke/twilight.nvim',
@@ -207,6 +216,48 @@ local plugins = {
     'folke/zen-mode.nvim',
     config = function()
       require('config.plugins.zen-mode')
+    end,
+  },
+
+  -- helpful 
+  {
+    'folke/which-key.nvim',
+    config = function()
+      -- TODO: add keymaps with register
+      require('which-key').setup()
+    end,
+  },
+  {
+    'folke/todo-comments.nvim',
+    config = function()
+      -- TODO: config
+      require('todo-comments').setup()
+    end,
+  },
+  {
+    'numToStr/Comment.nvim',
+    config = function()
+      require('Comment').setup()
+    end,
+  },
+  {
+    'ahmedkhalf/project.nvim',
+    config = function()
+      -- TODO: configure
+      require('project_nvim').setup()
+    end,
+  },
+  {
+    'glepnir/dashboard-nvim',
+    config = function()
+      -- TODO: configure
+    end,
+  },
+  {
+    'norcalli/nvim-colorizer.lua',
+    config = function()
+      -- TODO: configure
+      require('colorizer').setup()
     end,
   },
 }
