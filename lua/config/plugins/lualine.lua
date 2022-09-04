@@ -8,8 +8,8 @@ require('lualine').setup({
       right = icons.rounded_left_filled,
     },
     component_separators = {
-      left = icons.arrow_right,
-      right = icons.arrow_left,
+      left = icons.rounded_right,
+      right = icons.rounded_left,
     },
   },
 })
