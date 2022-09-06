@@ -1,11 +1,21 @@
 do
-  local ok, _ = pcall(require, 'impatient')
-  if not ok then
+  local ok, impatient = pcall(require, 'impatient')
+  if ok then
+    impatient.enable_profile()
+  else
     vim.notify('impatient.nvim not installed', vim.log.levels.WARN)
   end
 end
 
-local ok, err = pcall(require, 'config')
-if not ok then
-  error(('Error loading config:\n\n%s'):format(err))
+local modules = {
+  'settings',
+  'plugins',
+  'theme',
+}
+
+for _, module in ipairs(modules) do
+  local ok, err = require(module)
+  if not ok then
+    vim.notify(('Error loading submodule %s:\n\n%s'):format(module, err))
+  end
 end
