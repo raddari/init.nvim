@@ -169,7 +169,7 @@ M.telescope = {
     n = { '<Cmd>Telescope notify<CR>', 'Open notification history' },
     ['$'] = { '<Cmd>Telescope env<CR>', 'Open environment variables picker' },
   },
-  ['<Leader>t'] = { '<Cmd>Telescope file_browser<CR>' },
+  ['<Leader>t'] = { '<Cmd>Telescope file_browser<CR>', 'File browser' },
   ['<M-u>'] = { '<Cmd>Telescope symbols', 'Open emoji/math symbol picker' },
 }
 
