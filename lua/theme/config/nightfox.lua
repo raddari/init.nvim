@@ -1,10 +1,14 @@
--- TODO: fill this in
 local M = {}
 
-M.config = function() end
-
-M.colors = function()
-  return {}
+M.config = function()
+  require('nightfox').setup({
+    options = {
+      dim_inactive = true,
+      modules = {
+        coc = { enable = false },
+      },
+    },
+  })
 end
 
 return M
