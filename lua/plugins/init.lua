@@ -1,6 +1,6 @@
 local ok, _ = pcall(require, 'plugins.compiled')
-  if not ok then
-    vim.notify('Run :PackerCompile!', vim.log.levels.WARN)
+if not ok then
+  vim.notify('Run :PackerCompile!', vim.log.levels.WARN)
 end
 
 local fn = vim.fn

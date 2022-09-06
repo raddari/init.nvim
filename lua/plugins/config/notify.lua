@@ -11,7 +11,7 @@ notify.setup({
     INFO = icons.info,
     TRACE = icons.trace,
     WARN = icons.warn,
-  }
+  },
 })
 
 vim.notify = notify
