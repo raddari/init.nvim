@@ -2,8 +2,8 @@ local M = {}
 
 M.config = function()
   require('kanagawa').setup({
-    commentStyle = { italic = false },
-    keywordStyle = { italic = false },
+    commentStyle = {},
+    keywordStyle = {},
     dimInactive = true,
     globalStatus = true,
   })
