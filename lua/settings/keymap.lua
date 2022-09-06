@@ -1,14 +1,23 @@
 local M = {}
 
+M.register = function(self, wk)
+  for group, keymap in pairs(self) do
+    if group ~= 'register' then
+      wk.register(keymap)
+    end
+  end
+
+  -- some stuff that's annoying to do in which-key
+  local map = vim.keymap.set
+  map({ 'n', 'i', 'v' }, '<Up>', '<Nop>')
+  map({ 'n', 'i', 'v' }, '<Down>', '<Nop>')
+  map({ 'n', 'i', 'v' }, '<Left>', '<Nop>')
+  map({ 'n', 'i', 'v' }, '<Right>', '<Nop>')
+  map('i', '<BS>', '<Nop>')
+end
+
 M.nvim = {
   name = 'nvim',
-  -- remove arrow key crutches
-  ['<Up>'] = { '<Nop>', mode = { 'n', 'i', 'v' } },
-  ['<Down>'] = { '<Nop>', mode = { 'n', 'i', 'v' } },
-  ['<Left>'] = { '<Nop>', mode = { 'n', 'i', 'v' } },
-  ['<Right>'] = { '<Nop>', mode = { 'n', 'i', 'v' } },
-  -- remove backspace during insert (use <C-h> or <C-w>)
-  ['<BS>'] = { '<Nop>', mode = 'i' },
   ['<Leader>'] = {
     -- splits
     ['\\'] = { '<Cmd>vsplit<CR>', 'Vertical split' },
@@ -138,8 +147,8 @@ M.trouble = {
     d = { '<Cmd>TroubleToggle document_diagnostics<CR>', 'Toggle document diagnostics' },
     l = { '<Cmd>TroubleToggle loclist<CR>', 'Toggle diagnostic loclist' },
     q = { '<Cmd>TroubleToggle quickfix<CR>', 'Toggle quickfix' },
+    r = { '<Cmd>TroubleToggle lsp_references<CR>', 'Toggle references' },
   },
-  gR = { '<Cmd>TroubleToggle lsp_references<CR>', 'Toggle references' },
 }
 
 M.telescope = {
@@ -150,10 +159,11 @@ M.telescope = {
     f = { '<Cmd>Telescope git_files<CR>', 'Search for git versioned files in workspace' },
     a = { '<Cmd>Telescope find_files<CR>', 'Search for files in workspace' },
     b = { '<Cmd>Telescope buffers<CR>', 'Open buffer picker' },
+    c = { '<Cmd>Telescope colorscheme<CR>', 'Open colorscheme picker' },
     h = { '<Cmd>Telescope help_tags<CR>', 'Search for help pages' },
     k = { '<Cmd>Telescope keymaps<CR>', 'Search for keymaps' },
-    r = { '<Cmd>Telescope registers<CR>', 'Show contents of registers' },
     u = { '<Cmd>Telescope symbols<CR>', 'Open emoji/math symbol picker' },
+    ['"'] = { '<Cmd>Telescope registers<CR>', 'Show contents of registers' },
     -- extensions
     s = { '<Cmd>Telescope luasnip<CR>', 'Open LuaSnip picker' },
     n = { '<Cmd>Telescope notify<CR>', 'Open notification history' },

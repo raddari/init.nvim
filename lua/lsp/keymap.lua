@@ -2,73 +2,71 @@ local M = {}
 
 M.init = function(_, bufnr)
   local lsp = vim.lsp.buf
-  local diagnostic = vim.diagnostics
+  local diagnostic = vim.diagnostic
 
   local wk = require('which-key')
   wk.register({
     name = 'lsp',
+    g = {
+      d = {
+        function()
+          lsp.definition()
+        end,
+        'Goto definition',
+      },
+      D = {
+        function()
+          lsp.declaration()
+        end,
+        'Goto declaration',
+      },
+      i = {
+        function()
+          lsp.implementation()
+        end,
+        'Goto implementation',
+      },
+      t = {
+        function()
+          lsp.type_definition()
+        end,
+        'Goto definition',
+      },
+      r = {
+        function()
+          lsp.references()
+        end,
+        'Goto references',
+      },
+      n = {
+        function()
+          lsp.rename()
+        end,
+        'Rename symbol',
+      },
+      f = {
+        function()
+          lsp.format()
+        end,
+        'Format file',
+      },
+      x = {
+        function()
+          diagnostic.open_float()
+        end,
+        'Open diagnostics',
+        buffer = nil,
+      },
+      a = {
+        function()
+          lsp.code_action()
+        end,
+        'Code actions',
+      },
+    },
     ['<Leader>'] = {
-      g = {
-        d = {
-          function()
-            lsp.definition()
-          end,
-          'Goto definition',
-        },
-        D = {
-          function()
-            lsp.declaration()
-          end,
-          'Goto declaration',
-        },
-        i = {
-          function()
-            lsp.implementation()
-          end,
-          'Goto implementation',
-        },
-        t = {
-          function()
-            lsp.type_definition()
-          end,
-          'Goto definition',
-        },
-        r = {
-          function()
-            lsp.references()
-          end,
-          'Goto references',
-        },
-        n = {
-          function()
-            lsp.rename()
-          end,
-          'Rename symbol',
-        },
-        f = {
-          function()
-            lsp.format()
-          end,
-          'Format file',
-        },
-        e = {
-          function()
-            diagnostic.open_float()
-          end,
-          'Open diagnostics',
-          buffer = nil,
-        },
-      },
-      c = {
-        a = {
-          function()
-            lsp.code_action()
-          end,
-          'Code actions',
-        },
-      },
       w = {
-        e = {
+        x = {
           function()
             require('telescope.builtin').diagnostics()
           end,
@@ -86,17 +84,11 @@ M.init = function(_, bufnr)
           end,
           'Remove workspace folder',
         },
-        s = {
-          function()
-            lsp.workspace_symbol()
-          end,
-          'List workplace symbols',
-        },
         l = {
           function()
             lsp.list_workspace_folders()
           end,
-          'List workspace symbols',
+          'List workspace folders',
         },
       },
     },
