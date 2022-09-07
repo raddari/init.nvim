@@ -1,8 +1,21 @@
 local M = {}
 
-M.init = function(_, bufnr)
+local group = vim.api.nvim_create_augroup('LspFormatting', {})
+
+M.init = function(client, bufnr)
   local lsp = vim.lsp.buf
   local diagnostic = vim.diagnostic
+
+  if client.supports_method('textDocument/formatting') and vim.b[bufnr].format_on_save then
+    vim.api.nvim_clear_autocmds({ group = group, buffer = bufnr })
+    vim.api.nvim_create_autocmd('BufWritePre', {
+      callback = function()
+        lsp.format({ buffer = bufnr })
+      end,
+      group = group,
+      buffer = bufnr,
+    })
+  end
 
   local wk = require('which-key')
   wk.register({
