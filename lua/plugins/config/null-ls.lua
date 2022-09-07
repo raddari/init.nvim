@@ -7,6 +7,7 @@ local hover = null_ls.builtins.hover
 local completion = null_ls.builtins.completion
 
 local config = {
+  debug = true,
   on_attach = function(client, bufnr)
     require('lsp.keymap').init(client, bufnr)
   end,

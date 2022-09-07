@@ -44,12 +44,6 @@ M.init = function(_, bufnr)
         end,
         'Rename symbol',
       },
-      f = {
-        function()
-          lsp.format()
-        end,
-        'Format file',
-      },
       x = {
         function()
           diagnostic.open_float()
@@ -65,6 +59,12 @@ M.init = function(_, bufnr)
       },
     },
     ['<Leader>'] = {
+      F = {
+        function()
+          lsp.format({ bufnr = bufnr })
+        end,
+        'Format buffer',
+      },
       w = {
         x = {
           function()

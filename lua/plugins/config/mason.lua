@@ -1,4 +1,4 @@
-require('mason.settings').set({
+require('mason').setup({
   ui = {
     border = 'single',
     icons = {

@@ -12,28 +12,20 @@ local packerspecs = {
       require('plugins.config.mason')
     end,
   },
-  { 'williamboman/mason-lspconfig.nvim' },
-  { 'neovim/nvim-lspconfig' },
   {
-    'VonHeikemen/lsp-zero.nvim',
+    'williamboman/mason-lspconfig.nvim',
     config = function()
-      require('plugins.config.lsp-zero')
+      require('plugins.config.mason-lspconfig')
+    end,
+  },
+  {
+    'neovim/nvim-lspconfig',
+    config = function()
+      require('plugins.config.lspconfig')
     end,
     requires = {
-      -- autocomplete
-      { 'hrsh7th/cmp-nvim-lsp' },
-      { 'hrsh7th/cmp-nvim-lua' },
-      { 'hrsh7th/cmp-buffer' },
-      { 'hrsh7th/cmp-path' },
-      { 'petertriho/cmp-git' },
-      { 'saadparwaiz1/cmp_luasnip' },
-      -- snippets
-      { 'rafamadriz/friendly-snippets' },
-      { 'L3MON4D3/LuaSnip' },
-      -- extensions
       { 'b0o/SchemaStore.nvim' },
       { 'jose-elias-alvarez/nvim-lsp-ts-utils' },
-      { 'rcarriga/cmp-dap' },
       { 'p00f/clangd_extensions.nvim' },
       { 'simrat39/rust-tools.nvim' },
     },
@@ -124,7 +116,20 @@ local packerspecs = {
     config = function()
       require('plugins.config.cmp')
     end,
-    requires = { 'L3MON4D3/LuaSnip' },
+    requires = {
+      -- autocomplete
+      { 'hrsh7th/cmp-nvim-lsp' },
+      { 'hrsh7th/cmp-nvim-lua' },
+      { 'hrsh7th/cmp-buffer' },
+      { 'hrsh7th/cmp-path' },
+      { 'petertriho/cmp-git' },
+      { 'saadparwaiz1/cmp_luasnip' },
+      -- snippets
+      { 'rafamadriz/friendly-snippets' },
+      { 'L3MON4D3/LuaSnip' },
+      -- extensions
+      { 'rcarriga/cmp-dap' },
+    },
   },
   {
     'petertriho/cmp-git',
