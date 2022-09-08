@@ -25,7 +25,6 @@ local packerspecs = {
     end,
     requires = {
       { 'b0o/SchemaStore.nvim' },
-      { 'jose-elias-alvarez/nvim-lsp-ts-utils' },
       { 'p00f/clangd_extensions.nvim' },
       { 'simrat39/rust-tools.nvim' },
     },
@@ -75,7 +74,6 @@ local packerspecs = {
       { 'kyazdani42/nvim-web-devicons' },
     },
   },
-  { 'nvim-telescope/telescope-symbols.nvim' },
   {
     'nvim-telescope/telescope-file-browser.nvim',
     config = function()
@@ -270,17 +268,6 @@ local packerspecs = {
     config = function()
       require('plugins.config.Comment')
     end,
-  },
-  {
-    'sudormrfbin/cheatsheet.nvim',
-    config = function()
-      require('plugins.config.cheatsheet')
-    end,
-    requires = {
-      { 'nvim-telescope/telescope.nvim' },
-      { 'nvim-lua/popup.nvim' },
-      { 'nvim-lua/plenary.nvim' },
-    },
   },
   {
     'ahmedkhalf/project.nvim',
