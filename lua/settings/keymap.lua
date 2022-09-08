@@ -114,12 +114,7 @@ M.zenmode = {
 
 M.notify = {
   name = 'notify',
-  ['<Leader>nh'] = {
-    function()
-      require('notify').history()
-    end,
-    'Show notification history',
-  },
+  ['<Leader>nh'] = { '<Cmd>Notifications<CR>', 'Show notification history' },
 }
 
 M.todo_comments = {
@@ -161,6 +156,15 @@ M.toggleterm = {
   ['<C-l>'] = { '<Cmd>wincmd l<CR>', 'Move right from terminal', mode = 't' },
 }
 
+M.icon_picker = {
+  name = 'icon-picker.nvim',
+  ['<Leader>f'] = {
+    u = { '<Cmd>IconPickerNormal<CR>', 'Insert icon/emoji/nerdfont' },
+    U = { '<Cmd>IconPickerYank<CR>', 'Yank icon/emoji/nerdfont' },
+  },
+  ['<M-u>'] = { '<Cmd>IconPickerInsert<CR>', 'Insert icon/emoji/nerdfont' },
+}
+
 M.telescope = {
   name = 'telescope.nvim',
   -- builtin
@@ -172,7 +176,6 @@ M.telescope = {
     c = { '<Cmd>Telescope colorscheme<CR>', 'Open colorscheme picker' },
     h = { '<Cmd>Telescope help_tags<CR>', 'Search for help pages' },
     k = { '<Cmd>Telescope keymaps<CR>', 'Search for keymaps' },
-    u = { '<Cmd>Telescope symbols<CR>', 'Open emoji/math symbol picker' },
     ['"'] = { '<Cmd>Telescope registers<CR>', 'Show contents of registers' },
     -- extensions
     s = { '<Cmd>Telescope luasnip<CR>', 'Open LuaSnip picker' },
@@ -180,7 +183,6 @@ M.telescope = {
     ['$'] = { '<Cmd>Telescope env<CR>', 'Open environment variables picker' },
   },
   ['<Leader>t'] = { '<Cmd>Telescope file_browser<CR>', 'File browser' },
-  ['<M-u>'] = { '<Cmd>Telescope symbols', 'Open emoji/math symbol picker' },
 }
 
 return M

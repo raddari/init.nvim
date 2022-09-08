@@ -99,6 +99,13 @@ local packerspecs = {
       require('telescope').load_extension('env')
     end,
   },
+  {
+    'ziontee113/icon-picker.nvim',
+    config = function()
+      require('icon-picker').setup({ disable_legacy_commands = true })
+    end,
+    requires = { 'stevearc/dressing.nvim' },
+  },
 
   -- better floating and input menus
   {
