@@ -228,6 +228,8 @@ local packerspecs = {
       { 'nvim-treesitter/nvim-treesitter' },
     },
   },
+  -- TODO: neotest
+  -- https://github.com/nvim-neotest/neotest
 
   -- peace and serenity
   {
