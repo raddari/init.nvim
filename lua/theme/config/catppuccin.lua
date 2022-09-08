@@ -2,7 +2,7 @@ local M = {}
 
 M.config = function()
   require('catppuccin').setup({
-    dim_inactive = { enabled = true },
+    dim_inactive = { enabled = false },
     term_colors = true,
     styles = {
       comments = {},

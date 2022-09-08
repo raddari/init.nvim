@@ -6,7 +6,7 @@ M.config = function()
       comments = 'NONE',
       keywords = 'NONE',
     },
-    dim_inactive = true,
+    dim_inactive = false,
     lualine_bold = true,
   })
 end

@@ -242,6 +242,12 @@ local packerspecs = {
       require('plugins.config.zen-mode')
     end,
   },
+  {
+    'levouh/tint.nvim',
+    config = function()
+      require('plugins.config.tint')
+    end,
+  },
 
   -- helpful 
   {
