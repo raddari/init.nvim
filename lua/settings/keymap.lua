@@ -151,6 +151,16 @@ M.trouble = {
   },
 }
 
+M.toggleterm = {
+  -- TODO: overhaul by changing whichkey register groups to functions
+  name = 'toggleterm.nvim',
+  ['<Esc>'] = { [[<C-\><C-n>]], 'Close terminal', mode = 't' },
+  ['<C-h>'] = { '<Cmd>wincmd h<CR>', 'Move left from terminal', mode = 't' },
+  ['<C-j>'] = { '<Cmd>wincmd j<CR>', 'Move down from terminal', mode = 't' },
+  ['<C-k>'] = { '<Cmd>wincmd k<CR>', 'Move up from terminal', mode = 't' },
+  ['<C-l>'] = { '<Cmd>wincmd l<CR>', 'Move right from terminal', mode = 't' },
+}
+
 M.telescope = {
   name = 'telescope.nvim',
   -- builtin
