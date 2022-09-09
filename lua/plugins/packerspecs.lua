@@ -5,6 +5,14 @@ local packerspecs = {
   -- colorscheme/theme/highlights
   require('theme.plugins').init(),
 
+  -- lua plugin dev
+  {
+    'folke/lua-dev.nvim',
+    config = function()
+      require('plugins.config.lua-dev')
+    end,
+  },
+
   -- lsp
   {
     'williamboman/mason.nvim',
