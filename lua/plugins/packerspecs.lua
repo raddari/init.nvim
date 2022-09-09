@@ -292,6 +292,8 @@ local packerspecs = {
   },
   -- confirm file to edit if multiple expansions possible
   { 'mong8se/actually.nvim' },
+  -- remember the last colorscheme picked
+  { 'raddari/last-color.nvim' },
   {
     'goolord/alpha-nvim',
     config = function()
