@@ -1,8 +1,8 @@
 local tint = require('tint')
 
 tint.setup({
-  tint = -35, -- Darken colors, use a positive value to brighten
-  saturation = 0.6, -- Saturation to preserve
+  tint = -15, -- Darken colors, use a positive value to brighten
+  saturation = 0.4, -- Saturation to preserve
   transforms = tint.transforms.SATURATE_TINT, -- Showing default behavior, but value here can be predefined set of transforms
   tint_background_colors = true, -- Tint background portions of highlight groups
   highlight_ignore_patterns = { 'WinSeparator', 'Status.*' }, -- Highlight group patterns to ignore, see `string.find`
