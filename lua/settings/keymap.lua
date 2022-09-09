@@ -162,7 +162,7 @@ M.icon_picker = {
     u = { '<Cmd>IconPickerNormal<CR>', 'Insert icon/emoji/nerdfont' },
     U = { '<Cmd>IconPickerYank<CR>', 'Yank icon/emoji/nerdfont' },
   },
-  ['<M-u>'] = { '<Cmd>IconPickerInsert<CR>', 'Insert icon/emoji/nerdfont' },
+  ['<M-u>'] = { '<Cmd>IconPickerInsert<CR>', 'Insert icon/emoji/nerdfont', mode = 'i' },
 }
 
 M.telescope = {
@@ -182,7 +182,7 @@ M.telescope = {
     n = { '<Cmd>Telescope notify<CR>', 'Open notification history' },
     ['$'] = { '<Cmd>Telescope env<CR>', 'Open environment variables picker' },
   },
-  ['<Leader>t'] = { '<Cmd>Telescope file_browser<CR>', 'File browser' },
+  ['<Leader>t'] = { '<Cmd>Telescope file_browser path=%:p:h<CR>', 'File browser' },
 }
 
 return M
