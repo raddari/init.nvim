@@ -8,6 +8,7 @@ M.supported_themes = {
   nightfox = 'edeneast/nightfox.nvim',
   nord = 'shaunsingh/nord.nvim',
   tokyonight = 'folke/tokyonight.nvim',
+  tundra = 'sam4llis/nvim-tundra',
 }
 
 M.init = function()
