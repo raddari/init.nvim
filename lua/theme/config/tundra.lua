@@ -32,7 +32,7 @@ M.config = function()
       treesitter = true,
       cmp = true,
       context = true,
-      dbui = true,
+      dbui = false,
       gitsigns = true,
       telescope = true,
     },

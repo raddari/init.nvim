@@ -146,7 +146,7 @@ local M = {
   {
     'kylechui/nvim-surround',
     config = function()
-      require('plugins.config.surround')
+      require('nvim-surround').setup()
     end,
   },
   {
@@ -193,7 +193,7 @@ local M = {
   {
     'folke/twilight.nvim',
     config = function()
-      require('plugins.config.twilight')
+      require('twilight').setup()
     end,
   },
   {
@@ -238,7 +238,7 @@ local M = {
   {
     'norcalli/nvim-colorizer.lua',
     config = function()
-      require('plugins.config.colorizer')
+      require('colorizer').setup()
     end,
   },
   -- confirm file to edit if multiple expansions possible

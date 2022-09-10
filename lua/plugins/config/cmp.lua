@@ -9,9 +9,6 @@ end
 
 -- cmp: general
 cmp.setup({
-  enabled = function()
-    return vim.api.nvim_buf_get_option(0, 'buftype') ~= 'prompt' or require('cmp_dap').is_dap_buffer()
-  end,
   completion = {
     autocomplete = false,
   },
@@ -151,10 +148,4 @@ cmp.setup.filetype('TelescopePrompt', {
   enabled = function()
     return false
   end,
-})
-
-cmp.setup.filetype({ 'dap-repl', 'dapui_watches' }, {
-  sources = {
-    { name = 'dap' },
-  },
 })
