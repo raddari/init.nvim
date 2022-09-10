@@ -1,4 +1,4 @@
-local packerspecs = {
+local M = {
   -- i am speed
   { 'lewis6991/impatient.nvim' },
 
@@ -315,4 +315,4 @@ local packerspecs = {
   },
 }
 
-return packerspecs
+return M
