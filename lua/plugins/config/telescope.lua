@@ -1,5 +1,4 @@
 local telescope = require('telescope')
-local trouble = require('trouble.providers.telescope')
 
 telescope.setup({
   defaults = {
@@ -21,14 +20,6 @@ telescope.setup({
       width = 0.87,
       height = 0.80,
       preview_cutoff = 120,
-    },
-    mappings = {
-      i = {
-        ['<C-t>'] = trouble.open_with_trouble,
-      },
-      n = {
-        ['<C-t>'] = trouble.open_with_trouble,
-      },
     },
   },
 })

@@ -44,15 +44,6 @@ local M = {
     end,
   },
 
-  -- pretty diagnostics
-  {
-    'folke/trouble.nvim',
-    config = function()
-      require('plugins.config.trouble')
-    end,
-    requires = { 'kyazdani42/nvim-web-devicons' },
-  },
-
   -- function signature help
   {
     'ray-x/lsp_signature.nvim',
@@ -95,18 +86,8 @@ local M = {
     end,
     run = 'make',
   },
-  {
-    'benfowler/telescope-luasnip.nvim',
-    config = function()
-      require('telescope').load_extension('luasnip')
-    end,
-  },
-  {
-    'LinArcX/telescope-env.nvim',
-    config = function()
-      require('telescope').load_extension('env')
-    end,
-  },
+
+  -- find nerd fonts/emojis
   {
     'ziontee113/icon-picker.nvim',
     config = function()
@@ -140,8 +121,6 @@ local M = {
       -- snippets
       { 'rafamadriz/friendly-snippets' },
       { 'L3MON4D3/LuaSnip' },
-      -- extensions
-      { 'rcarriga/cmp-dap' },
     },
   },
   {
@@ -210,40 +189,6 @@ local M = {
     requires = { 'kyazdani42/nvim-web-devicons' },
   },
 
-  -- debugging/terminal
-  {
-    'akinsho/toggleterm.nvim',
-    config = function()
-      require('plugins.config.toggleterm')
-    end,
-    tag = '*',
-  },
-  {
-    'mfussenegger/nvim-dap',
-    config = function()
-      require('plugins.config.dap')
-    end,
-  },
-  {
-    'rcarriga/nvim-dap-ui',
-    config = function()
-      require('plugins.config.dap-ui')
-    end,
-    requires = { 'mfussenegger/nvim-dap' },
-  },
-  {
-    'theHamsta/nvim-dap-virtual-text',
-    config = function()
-      require('plugins.config.dap-virtual-text')
-    end,
-    requires = {
-      { 'mfussenegger/nvim-dap' },
-      { 'nvim-treesitter/nvim-treesitter' },
-    },
-  },
-  -- TODO: neotest
-  -- https://github.com/nvim-neotest/neotest
-
   -- peace and serenity
   {
     'folke/twilight.nvim',
@@ -290,29 +235,16 @@ local M = {
       require('plugins.config.project')
     end,
   },
-  -- confirm file to edit if multiple expansions possible
-  { 'mong8se/actually.nvim' },
-  -- remember the last colorscheme picked
-  { 'raddari/last-color.nvim' },
-  {
-    'goolord/alpha-nvim',
-    config = function()
-      require('plugins.config.alpha')
-    end,
-    requires = { 'kyazdani42/nvim-web-devicons' },
-  },
   {
     'norcalli/nvim-colorizer.lua',
     config = function()
       require('plugins.config.colorizer')
     end,
   },
-  {
-    'declancm/cinnamon.nvim',
-    config = function()
-      require('plugins.config.cinnamon')
-    end,
-  },
+  -- confirm file to edit if multiple expansions possible
+  { 'mong8se/actually.nvim' },
+  -- remember the last colorscheme picked
+  { 'raddari/last-color.nvim' },
 }
 
 return M
