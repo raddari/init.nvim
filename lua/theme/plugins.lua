@@ -6,6 +6,7 @@ M.supported_themes = {
   gruvbox = 'sainnhe/gruvbox-material',
   kanagawa = 'rebelot/kanagawa.nvim',
   nightfox = 'edeneast/nightfox.nvim',
+  nord = 'shaunsingh/nord.nvim',
   tokyonight = 'folke/tokyonight.nvim',
 }
 
