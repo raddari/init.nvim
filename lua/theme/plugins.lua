@@ -2,11 +2,8 @@ local M = {}
 
 M.supported_themes = {
   catppuccin = 'catppuccin/nvim',
-  everforest = 'sainnhe/everforest',
-  gruvbox = 'sainnhe/gruvbox-material',
   kanagawa = 'rebelot/kanagawa.nvim',
   nightfox = 'edeneast/nightfox.nvim',
-  nord = 'shaunsingh/nord.nvim',
   tokyonight = 'folke/tokyonight.nvim',
   tundra = 'sam4llis/nvim-tundra',
 }
