@@ -4,6 +4,7 @@ local opt = vim.opt
 g.mapleader = ' ' -- set leader key
 
 opt.breakindent = true -- line wraps have the same level of indentation
+opt.colorcolumn = '+1'
 opt.completeopt:append({
   'menuone',
   'noinsert',
@@ -47,6 +48,7 @@ opt.splitbelow = true -- :split puts new window below current
 opt.splitright = true -- :vsplit puts new window to the right
 opt.tabstop = 2 -- see 'softtabstop'
 opt.termguicolors = true -- enable 24-bit RGB color
+opt.textwidth = 120
 opt.undofile = true -- save undo history to file
 opt.undolevels = 150 -- max number of changes that can be undone
 opt.updatetime = 300 -- write swapfile after this delay (ms)
