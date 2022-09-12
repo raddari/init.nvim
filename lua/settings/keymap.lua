@@ -40,68 +40,6 @@ M.gitsigns = {
   },
 }
 
-M.dap = {
-  name = 'dap',
-  ['<Leader>'] = {
-    p = {
-      function()
-        require('dap').continue()
-      end,
-      'Continue',
-    },
-    o = {
-      function()
-        require('dap').step_over()
-      end,
-      'Step over',
-    },
-    O = {
-      function()
-        require('dap').step_into()
-      end,
-      'Step into',
-    },
-    OO = {
-      function()
-        require('dap').step_out()
-      end,
-      'Step out',
-    },
-    b = {
-      function()
-        require('dap').toggle_breakpoint()
-      end,
-      'Toggle breakpoint',
-    },
-    B = {
-      function()
-        require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))
-      end,
-      'Conditional breakpoint',
-    },
-    L = {
-      function()
-        require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))
-      end,
-      'Set logpoint',
-    },
-  },
-  ['<Leader>d'] = {
-    r = {
-      function()
-        require('dap').repl.open()
-      end,
-      'Open REPL',
-    },
-    l = {
-      function()
-        require('dap').run_last()
-      end,
-      'Rerun debug',
-    },
-  },
-}
-
 M.twilight = {
   name = 'twilight',
   ['<Leader>z'] = { '<Cmd>Twilight<CR>', 'Toggle Twilight' },
@@ -134,28 +72,6 @@ M.project = {
   ['<Leader>fp'] = { '<Cmd>Telescope projects<CR>', 'Open list of recently opened projects' },
 }
 
-M.trouble = {
-  name = 'trouble.nvim',
-  ['<Leader>x'] = {
-    x = { '<Cmd>TroubleToggle<CR>', 'Toggle diagnostics' },
-    w = { '<Cmd>TroubleToggle workspace_diagnostics<CR>', 'Toggle workspace diagnostics' },
-    d = { '<Cmd>TroubleToggle document_diagnostics<CR>', 'Toggle document diagnostics' },
-    l = { '<Cmd>TroubleToggle loclist<CR>', 'Toggle diagnostic loclist' },
-    q = { '<Cmd>TroubleToggle quickfix<CR>', 'Toggle quickfix' },
-    r = { '<Cmd>TroubleToggle lsp_references<CR>', 'Toggle references' },
-  },
-}
-
-M.toggleterm = {
-  -- TODO: overhaul by changing whichkey register groups to functions
-  name = 'toggleterm.nvim',
-  ['<Esc>'] = { [[<C-\><C-n>]], 'Close terminal', mode = 't' },
-  ['<C-h>'] = { '<Cmd>wincmd h<CR>', 'Move left from terminal', mode = 't' },
-  ['<C-j>'] = { '<Cmd>wincmd j<CR>', 'Move down from terminal', mode = 't' },
-  ['<C-k>'] = { '<Cmd>wincmd k<CR>', 'Move up from terminal', mode = 't' },
-  ['<C-l>'] = { '<Cmd>wincmd l<CR>', 'Move right from terminal', mode = 't' },
-}
-
 M.icon_picker = {
   name = 'icon-picker.nvim',
   ['<Leader>f'] = {
@@ -178,9 +94,7 @@ M.telescope = {
     k = { '<Cmd>Telescope keymaps<CR>', 'Search for keymaps' },
     ['"'] = { '<Cmd>Telescope registers<CR>', 'Show contents of registers' },
     -- extensions
-    s = { '<Cmd>Telescope luasnip<CR>', 'Open LuaSnip picker' },
     n = { '<Cmd>Telescope notify<CR>', 'Open notification history' },
-    ['$'] = { '<Cmd>Telescope env<CR>', 'Open environment variables picker' },
   },
   ['<Leader>t'] = { '<Cmd>Telescope file_browser path=%:p:h<CR>', 'File browser' },
 }
