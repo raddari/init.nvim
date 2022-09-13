@@ -1,30 +1,31 @@
 local lspconfig = require('lspconfig')
 
-local default_config = {
-  capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-  on_attach = function(client, bufnr)
-    require('lsp.keymap').init(client, bufnr)
-  end,
+-- extension servers
+for _, extension in ipairs({
+  'clangd_extensions',
+  'null-ls',
+  'rust-tools'
+}) do
+  lspconfig[extension] = require(extension)
+end
+
+local with = function(config)
+  return vim.tbl_deep_extend('force', require('lsp.default'), config)
+end
+
+local with_default = function()
+  return require('lsp.default')
+end
+
+local servers = {
+  cmake = with_default(),
+  sumneko_lua = with(require('lsp.servers.sumneko_lua')),
+  taplo = with_default(),
+  clangd_extensions = require('lsp.servers.clangd'),
+  ['null-ls'] = with(require('lsp.servers.null-ls')),
+  ['rust-tools'] = require('lsp.servers.rust_analyzer'),
 }
 
-require('mason-lspconfig').setup_handlers({
-  function(server)
-    local config_path = ('lsp.providers.%s'):format(server)
-    local ok, server_config = pcall(require, config_path)
-    if not ok then
-      server_config = {}
-    end
-    local config = vim.tbl_deep_extend('force', default_config, server_config)
-    lspconfig[server].setup(config)
-  end,
-
-  ['clangd'] = function()
-    local config = vim.tbl_deep_extend('force', default_config, require('lsp.providers.clangd'))
-    require('clangd_extensions').setup(config)
-  end,
-
-  ['rust_analyzer'] = function()
-    local config = vim.tbl_deep_extend('force', default_config, require('lsp.providers.rust_analyzer'))
-    require('rust-tools').setup(config)
-  end,
-})
+for server, config in pairs(servers) do
+  lspconfig[server].setup(config)
+end

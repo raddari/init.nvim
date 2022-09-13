@@ -32,17 +32,11 @@ local M = {
       require('plugins.config.lspconfig')
     end,
     requires = {
-      { 'b0o/SchemaStore.nvim' },
       { 'p00f/clangd_extensions.nvim' },
       { 'simrat39/rust-tools.nvim' },
     },
   },
-  {
-    'jose-elias-alvarez/null-ls.nvim',
-    config = function()
-      require('plugins.config.null-ls')
-    end,
-  },
+  { 'jose-elias-alvarez/null-ls.nvim' },
 
   -- function signature help
   {
@@ -111,15 +105,11 @@ local M = {
       require('plugins.config.cmp')
     end,
     requires = {
-      -- autocomplete
       { 'hrsh7th/cmp-nvim-lsp' },
       { 'hrsh7th/cmp-nvim-lua' },
       { 'hrsh7th/cmp-buffer' },
       { 'hrsh7th/cmp-path' },
       { 'petertriho/cmp-git' },
-      { 'saadparwaiz1/cmp_luasnip' },
-      -- snippets
-      { 'rafamadriz/friendly-snippets' },
       { 'L3MON4D3/LuaSnip' },
     },
   },

@@ -2,28 +2,26 @@ local cmp = require('cmp')
 local luasnip = require('luasnip')
 local icons = require('theme.icons')
 
-local has_words_before = function()
-  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
-end
-
--- cmp: general
 cmp.setup({
   completion = {
     autocomplete = false,
   },
+  enabled = function()
+    local context = require('cmp.config.context')
+    if vim.api.nvim_get_mode().mode == 'c' then
+      return true
+    else
+      return not context.in_treesitter_capture('comment') and not context.in_syntax_group('Comment')
+    end
+  end,
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
     end,
   },
-})
-
--- cmp: keymaps
-cmp.setup({
   mapping = cmp.mapping.preset.insert({
-    ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-    ['<C-u>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-u>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping(function(_)
       if cmp.visible() then
         cmp.abort()
@@ -44,8 +42,6 @@ cmp.setup({
         cmp.select_next_item()
       elseif luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
-      elseif has_words_before() then
-        cmp.complete()
       else
         fallback()
       end
@@ -60,10 +56,6 @@ cmp.setup({
       end
     end, { 'i', 's' }),
   }),
-})
-
--- cmp: window
-cmp.setup({
   window = {
     documentation = cmp.config.window.bordered({
       border = 'none',
@@ -78,10 +70,6 @@ cmp.setup({
       side_padding = 0,
     }),
   },
-})
-
--- cmp: formatting
-cmp.setup({
   formatting = {
     fields = { 'kind', 'abbr', 'menu' },
     format = function(_, vim_item)
@@ -103,14 +91,9 @@ cmp.setup({
   experimental = {
     ghost_text = true,
   },
-})
-
--- cmp: sources
-cmp.setup({
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'nvim_lua' },
-    { name = 'luasnip' },
     { name = 'buffer' },
   }, {
     { name = 'path' },

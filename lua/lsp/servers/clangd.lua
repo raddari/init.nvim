@@ -1,4 +1,5 @@
 local config = {}
+local icons = require('theme.icons')
 
 config.server = {
   cmd = {
@@ -14,10 +15,13 @@ config.server = {
     semanticHighlighting = true,
   },
   on_attach = function(client, bufnr)
-    require('lsp.keymap').init(client, bufnr)
-    require('which-key').register({
-      ['<Leader>gs'] = { '<Cmd>ClangdSwitchSourceHeader<CR>', 'Switch between source and header files' },
-    }, { buffer = bufnr })
+    require('lsp.default').on_attach(client, bufnr)
+    vim.keymap.set(
+      'n',
+      '<Leader>gs',
+      '<Cmd>ClangdSwitchSourceHeader<CR>',
+      { desc = 'Switch between source/header', buffer = bufnr }
+    )
   end,
 }
 
@@ -28,10 +32,10 @@ config.extensions = {
     other_hints_prefix = ' ',
   },
   memory_usage = {
-    border = 'none',
+    border = icons.border,
   },
   symbol_info = {
-    border = 'none',
+    border = icons.border,
   },
 }
 

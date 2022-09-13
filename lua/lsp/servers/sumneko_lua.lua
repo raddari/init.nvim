@@ -30,10 +30,4 @@ config.settings.Lua = {
   },
 }
 
-config.on_attach = function(client, bufnr)
-  require('lsp.keymap').init(client, bufnr)
-  client.server_capabilities.documentFormattingProvider = false
-  client.server_capabilities.documentRangeFormattingProvider = false
-end
-
 return config
