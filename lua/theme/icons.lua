@@ -1,4 +1,5 @@
 local icons = {
+  border = 'single',
   rounded_left_filled = '',
   rounded_right_filled = '',
   rounded_left = '',
