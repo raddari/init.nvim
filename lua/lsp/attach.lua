@@ -80,7 +80,7 @@ M.codelens = function(client, bufnr)
 end
 
 M.format_on_save = function(client, bufnr)
-  if not client.server_capabilities.documentFormattingProvider then
+  if not client.server_capabilities.documentFormattingProvider or not vim.b[bufnr].format_on_save then
     return
   end
 
