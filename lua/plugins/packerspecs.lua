@@ -156,7 +156,6 @@ local M = {
       require('nvim-treesitter.install').update({ with_sync = true })
     end,
   },
-  { 'nvim-treesitter/nvim-treesitter-refactor' },
   { 'nvim-treesitter/nvim-treesitter-textobjects' },
   { 'JoosepAlviste/nvim-ts-context-commentstring' },
   { 'windwp/nvim-ts-autotag' },
