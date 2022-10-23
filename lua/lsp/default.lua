@@ -1,7 +1,7 @@
 local M = {}
 local lsp_attach = require('lsp.attach')
 
-M.capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+M.capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 M.on_attach = function(client, bufnr)
   lsp_attach.keymaps(client, bufnr)
