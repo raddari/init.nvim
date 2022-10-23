@@ -33,11 +33,8 @@ M.gitsigns = {
     b = { '<Cmd>Gitsigns toggle_current_line_blame<CR>', 'Toggle line blame' },
     d = { '<Cmd>Gitsigns toggle_word_diff<CR>', 'Toggle word diff' },
   },
-  ['<M>'] = {
-    b = { '<Cmd>Gitsigns toggle_current_line_blame<CR>', 'Toggle line blame' },
-    d = { '<Cmd>Gitsigns toggle_word_diff<CR>', 'Toggle word diff' },
-    mode = 'i',
-  },
+  ['<M-b>'] = { '<Cmd>Gitsigns toggle_current_line_blame<CR>', 'Toggle line blame', mode = 'i' },
+  ['<M-d>'] = { '<Cmd>Gitsigns toggle_word_diff<CR>', 'Toggle word diff', mode = 'i' },
 }
 
 M.twilight = {
@@ -63,7 +60,6 @@ M.todo_comments = {
   ['<Leader>T'] = {
     l = { '<Cmd>TodoLocList<CR>', 'Open TODOs in loclist' },
     q = { '<Cmd>TodoQuickFix<CR>', 'Open TODOs in quickfix' },
-    x = { '<Cmd>TodoTrouble<CR>', 'Open TODOs in trouble.nvim' },
   },
 }
 
