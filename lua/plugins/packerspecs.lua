@@ -7,9 +7,9 @@ local M = {
 
   -- lua plugin dev
   {
-    'folke/lua-dev.nvim',
+    'folke/neodev.nvim',
     config = function()
-      require('plugins.config.lua-dev')
+      require('plugins.config.neodev')
     end,
   },
 
