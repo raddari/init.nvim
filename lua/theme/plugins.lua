@@ -5,7 +5,6 @@ M.supported_themes = {
   kanagawa = 'rebelot/kanagawa.nvim',
   nightfox = 'edeneast/nightfox.nvim',
   starry = 'ray-x/starry.nvim',
-  tokyonight = 'folke/tokyonight.nvim',
   tundra = 'sam4llis/nvim-tundra',
 }
 
