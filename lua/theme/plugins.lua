@@ -13,6 +13,7 @@ end
 
 M.supported_themes = {
   catppuccin = 'catppuccin/nvim',
+  iceberg = 'cocopon/iceberg.vim',
   kanagawa = 'rebelot/kanagawa.nvim',
   nightfox = 'edeneast/nightfox.nvim',
   starry = 'ray-x/starry.nvim',
