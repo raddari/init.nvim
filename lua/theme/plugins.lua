@@ -1,5 +1,16 @@
 local M = {}
 
+local get_config = function(spec, name)
+  if spec.config then
+    return spec.config
+  end
+  local ok, res = pcall(require, ('theme.config.%s'):format(name))
+  if ok then
+    return res.config
+  end
+  return function() end
+end
+
 M.supported_themes = {
   catppuccin = 'catppuccin/nvim',
   kanagawa = 'rebelot/kanagawa.nvim',
@@ -16,7 +27,7 @@ M.init = function()
       spec = { location }
     end
     spec.as = spec.as or name
-    spec.config = spec.config or require(('theme.config.%s'):format(name)).config
+    spec.config = get_config(spec, name)
     table.insert(packerspecs, spec)
   end
   return packerspecs
