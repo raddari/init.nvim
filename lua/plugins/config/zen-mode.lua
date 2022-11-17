@@ -26,3 +26,5 @@ require('zen-mode').setup({
     gs.refresh()
   end,
 })
+
+vim.keymap.set('n', '<Leader>Z', '<Cmd>ZenMode<CR>', { desc = 'Toggle Zen-Mode' })

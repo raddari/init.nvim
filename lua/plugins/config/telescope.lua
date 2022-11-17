@@ -1,6 +1,4 @@
-local telescope = require('telescope')
-
-telescope.setup({
+require('telescope').setup({
   defaults = {
     prompt_prefix = ' ',
     selection_caret = '❯ ',
@@ -23,3 +21,14 @@ telescope.setup({
     },
   },
 })
+
+local map = vim.keymap.set
+map('n', '<Leader>t', '<Cmd>Telescope file_browser path=%:p:h<CR>', { desc = 'File browser' })
+map('n', '<Leader>fg', '<Cmd>Telescope live_grep<CR>', { desc = 'Search for strings in workspace files' })
+map('n', '<Leader>ff', '<Cmd>Telescope git_files<CR>', { desc = 'Search for git versioned files in workspace' })
+map('n', '<Leader>fa', '<Cmd>Telescope find_files<CR>', { desc = 'Search for files in workspace' })
+map('n', '<Leader>fb', '<Cmd>Telescope buffers<CR>', { desc = 'Open buffer picker' })
+map('n', '<Leader>fc', '<Cmd>Telescope colorscheme<CR>', { desc = 'Open colorscheme picker' })
+map('n', '<Leader>fh', '<Cmd>Telescope help_tags<CR>', { desc = 'Search for help pages' })
+map('n', '<Leader>fk', '<Cmd>Telescope keymaps<CR>', { desc = 'Search for keymaps' })
+map('n', '<Leader>"', '<Cmd>Telescope registers<CR>', { desc = 'Show contents of registers' })

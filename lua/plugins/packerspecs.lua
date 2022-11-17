@@ -9,7 +9,7 @@ local M = {
   {
     'folke/neodev.nvim',
     config = function()
-      require('plugins.config.neodev')
+      require('neodev').setup({ lspconfig = false })
     end,
   },
 
@@ -85,7 +85,7 @@ local M = {
   {
     'ziontee113/icon-picker.nvim',
     config = function()
-      require('icon-picker').setup({ disable_legacy_commands = true })
+      require('plugins.config.icon-picker')
     end,
     requires = { 'stevearc/dressing.nvim' },
   },
@@ -184,6 +184,7 @@ local M = {
     'folke/twilight.nvim',
     config = function()
       require('twilight').setup()
+      vim.keymap.set('n', '<Leader>z', '<Cmd>Twilight<CR>', { desc = 'Toggle Twilight' })
     end,
   },
   {

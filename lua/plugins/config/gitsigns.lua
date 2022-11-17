@@ -39,3 +39,7 @@ require('gitsigns').setup({
     enable = false,
   },
 })
+
+local map = vim.keymap.set
+map('n', '<Leader>vb', '<Cmd>Gitsigns toggle_current_line_blame<CR>', { desc = 'Toggle line blame' })
+map('n', '<Leader>vd', '<Cmd>Gitsigns toggle_word_diff<CR>', { desc = 'Toggle word diff' })

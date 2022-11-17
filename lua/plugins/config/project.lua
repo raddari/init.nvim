@@ -35,3 +35,4 @@ require('project_nvim').setup({
 })
 
 require('telescope').load_extension('projects')
+vim.keymap.set('n', '<Leader>fp', '<Cmd>Telescope projects<CR>', { desc = 'List recently opened projects' })

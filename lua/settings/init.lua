@@ -1,4 +1,5 @@
 require('settings.autocommands')
 require('settings.disabled')
+require('settings.keymap')
 require('settings.lsp')
 require('settings.options')
