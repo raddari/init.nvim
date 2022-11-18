@@ -3,6 +3,7 @@ local icons = require('theme.icons')
 vim.diagnostic.config({
   signs = true,
   severity_sort = true,
+  virtual_text = false,
 })
 
 local signs = {
