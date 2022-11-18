@@ -26,6 +26,8 @@ local setup = require('plugins.config.packer')
 packer.init(setup.init)
 packer.startup(setup.use(require('plugins.packerspecs')))
 
+require('settings.keymaps')
+
 if first_install then
   require('packer').sync()
 end
