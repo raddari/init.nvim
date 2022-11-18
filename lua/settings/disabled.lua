@@ -19,6 +19,6 @@ local disabled_builtins = {
   'zipPlugin',
 }
 
-for _, plugin in pairs(disabled_builtins) do
+for _, plugin in ipairs(disabled_builtins) do
   vim.g[('loaded_%s'):format(plugin)] = 1
 end
