@@ -4,7 +4,7 @@ local lspconfig = require('lspconfig')
 for _, extension in ipairs({
   'clangd_extensions',
   'null-ls',
-  'rust-tools'
+  'rust-tools',
 }) do
   lspconfig[extension] = require(extension)
 end
@@ -13,14 +13,10 @@ local with = function(config)
   return vim.tbl_deep_extend('force', require('lsp.default'), config)
 end
 
-local with_default = function()
-  return require('lsp.default')
-end
-
 local servers = {
-  cmake = with_default(),
+  cmake = with({}),
   sumneko_lua = with(require('lsp.servers.sumneko_lua')),
-  taplo = with_default(),
+  taplo = with({}),
   clangd_extensions = require('lsp.servers.clangd'),
   ['null-ls'] = with(require('lsp.servers.null-ls')),
   ['rust-tools'] = require('lsp.servers.rust_analyzer'),

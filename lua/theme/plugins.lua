@@ -12,11 +12,9 @@ local get_config = function(spec, name)
 end
 
 M.supported_themes = {
-  catppuccin = 'catppuccin/nvim',
   iceberg = 'cocopon/iceberg.vim',
   kanagawa = 'rebelot/kanagawa.nvim',
   nightfox = 'edeneast/nightfox.nvim',
-  starry = 'ray-x/starry.nvim',
   tundra = 'sam4llis/nvim-tundra',
 }
 

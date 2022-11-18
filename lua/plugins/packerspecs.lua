@@ -5,6 +5,14 @@ local M = {
   -- colorscheme/theme/highlights
   require('theme.plugins').init(),
 
+  -- lots of small fast features
+  {
+    'echasnovski/mini.nvim',
+    config = function()
+      require('plugins.config.mini')
+    end,
+  },
+
   -- lua plugin dev
   {
     'folke/neodev.nvim',
@@ -37,23 +45,6 @@ local M = {
     },
   },
   { 'jose-elias-alvarez/null-ls.nvim' },
-
-  -- function signature help
-  {
-    'ray-x/lsp_signature.nvim',
-    config = function()
-      require('plugins.config.lsp_signature')
-    end,
-  },
-
-  -- pretty notifications
-  {
-    'rcarriga/nvim-notify',
-    config = function()
-      require('plugins.config.notify')
-    end,
-    requires = { 'nvim-telescope/telescope.nvim' },
-  },
 
   -- telescope
   {
@@ -98,54 +89,6 @@ local M = {
     end,
   },
 
-  -- IDE features
-  {
-    'hrsh7th/nvim-cmp',
-    config = function()
-      require('plugins.config.cmp')
-    end,
-    requires = {
-      { 'hrsh7th/cmp-nvim-lsp' },
-      { 'hrsh7th/cmp-nvim-lua' },
-      { 'hrsh7th/cmp-buffer' },
-      { 'hrsh7th/cmp-path' },
-      { 'petertriho/cmp-git' },
-      { 'L3MON4D3/LuaSnip' },
-    },
-  },
-  {
-    'petertriho/cmp-git',
-    config = function()
-      require('plugins.config.cmp-git')
-    end,
-    requires = { 'nvim-lua/plenary.nvim' },
-  },
-  {
-    'L3MON4D3/LuaSnip',
-    config = function()
-      require('plugins.config.luasnip')
-    end,
-    requires = { 'rafamadriz/friendly-snippets' },
-  },
-  {
-    'windwp/nvim-autopairs',
-    config = function()
-      require('plugins.config.autopairs')
-    end,
-  },
-  {
-    'kylechui/nvim-surround',
-    config = function()
-      require('nvim-surround').setup()
-    end,
-  },
-  {
-    'lukas-reineke/indent-blankline.nvim',
-    config = function()
-      require('plugins.config.indent-blankline')
-    end,
-  },
-
   -- treesitter
   {
     'nvim-treesitter/nvim-treesitter',
@@ -168,15 +111,6 @@ local M = {
       require('plugins.config.gitsigns')
     end,
     requires = { 'nvim-lua/plenary.nvim' },
-  },
-
-  -- lualine (maybe bufferline?)
-  {
-    'hoob3rt/lualine.nvim',
-    config = function()
-      require('plugins.config.lualine')
-    end,
-    requires = { 'kyazdani42/nvim-web-devicons' },
   },
 
   -- peace and serenity
@@ -208,19 +142,6 @@ local M = {
     end,
   },
   {
-    'folke/todo-comments.nvim',
-    config = function()
-      require('plugins.config.todo-comments')
-    end,
-    requires = { 'nvim-lua/plenary.nvim' },
-  },
-  {
-    'numToStr/Comment.nvim',
-    config = function()
-      require('plugins.config.Comment')
-    end,
-  },
-  {
     'ahmedkhalf/project.nvim',
     config = function()
       require('plugins.config.project')
@@ -232,8 +153,7 @@ local M = {
       require('colorizer').setup()
     end,
   },
-  -- confirm file to edit if multiple expansions possible
-  { 'mong8se/actually.nvim' },
+
   -- remember the last colorscheme picked
   { 'raddari/last-color.nvim' },
 }
