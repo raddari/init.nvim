@@ -3,7 +3,6 @@ require('plugins.config.mini.comment')
 require('plugins.config.mini.completion')
 require('plugins.config.mini.statusline')
 
-require('mini.cursorword').setup({})
 require('mini.indentscope').setup({})
 require('mini.jump').setup({})
 require('mini.jump2d').setup({})
