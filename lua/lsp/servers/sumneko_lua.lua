@@ -22,6 +22,9 @@ config.settings.Lua = {
   completion = {
     callSnippet = 'Replace',
   },
+  workspace = {
+    checkThirdParty = false,
+  },
 }
 
 return config
