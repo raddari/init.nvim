@@ -31,4 +31,5 @@ map('n', '<Leader>fb', '<Cmd>Telescope buffers<CR>', { desc = 'Open buffer picke
 map('n', '<Leader>fc', '<Cmd>Telescope colorscheme<CR>', { desc = 'Open colorscheme picker' })
 map('n', '<Leader>fh', '<Cmd>Telescope help_tags<CR>', { desc = 'Search for help pages' })
 map('n', '<Leader>fk', '<Cmd>Telescope keymaps<CR>', { desc = 'Search for keymaps' })
+map('n', '<Leader>fm', '<Cmd>Telescope man_pages sections=2,3,5,7<CR>', { desc = 'Search man pages' })
 map('n', '<Leader>"', '<Cmd>Telescope registers<CR>', { desc = 'Show contents of registers' })
