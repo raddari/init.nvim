@@ -33,10 +33,13 @@ config.server = {
 }
 
 config.tools = {
+  runnables = {
+    use_telescope = true,
+  },
   inlay_hints = {
-    only_current_line = true,
-    parameter_hints_prefix = ' ',
-    other_hints_prefix = ' ',
+    only_current_line = false,
+    parameter_hints_prefix = '',
+    other_hints_prefix = '',
   },
 }
 
