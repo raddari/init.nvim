@@ -5,11 +5,22 @@ local M = {
   -- colorscheme/theme/highlights
   require('theme.plugins').init(),
 
+  -- remember the last colorscheme picked
+  { 'raddari/last-color.nvim' },
+
   -- lots of small fast features
   {
     'echasnovski/mini.nvim',
     config = function()
       require('plugins.config.mini')
+    end,
+  },
+
+  -- dim inactive windows
+  {
+    'levouh/tint.nvim',
+    config = function()
+      require('plugins.config.tint')
     end,
   },
 
@@ -63,22 +74,15 @@ local M = {
     config = function()
       require('telescope').load_extension('file_browser')
     end,
+    requires = { 'nvim-telescope/telescope.nvim' },
   },
   {
     'nvim-telescope/telescope-fzf-native.nvim',
     config = function()
       require('telescope').load_extension('fzf')
     end,
+    requires = { 'nvim-telescope/telescope.nvim' },
     run = 'make',
-  },
-
-  -- find nerd fonts/emojis
-  {
-    'ziontee113/icon-picker.nvim',
-    config = function()
-      require('plugins.config.icon-picker')
-    end,
-    requires = { 'stevearc/dressing.nvim' },
   },
 
   -- better floating and input menus
@@ -99,7 +103,6 @@ local M = {
       require('nvim-treesitter.install').update({ with_sync = true })
     end,
   },
-  { 'nvim-treesitter/playground' },
   { 'nvim-treesitter/nvim-treesitter-textobjects' },
   { 'JoosepAlviste/nvim-ts-context-commentstring' },
   { 'windwp/nvim-ts-autotag' },
@@ -113,49 +116,21 @@ local M = {
     requires = { 'nvim-lua/plenary.nvim' },
   },
 
-  -- peace and serenity
-  {
-    'folke/twilight.nvim',
-    config = function()
-      require('twilight').setup()
-      vim.keymap.set('n', '<Leader>z', '<Cmd>Twilight<CR>', { desc = 'Toggle Twilight' })
-    end,
-  },
-  {
-    'folke/zen-mode.nvim',
-    config = function()
-      require('plugins.config.zen-mode')
-    end,
-  },
-  {
-    'levouh/tint.nvim',
-    config = function()
-      require('plugins.config.tint')
-    end,
-  },
-
-  -- helpful 
+  -- keymap helper
   {
     'folke/which-key.nvim',
     config = function()
       require('plugins.config.which-key')
     end,
   },
+
+  -- change cwd to project dir
   {
     'ahmedkhalf/project.nvim',
     config = function()
       require('plugins.config.project')
     end,
   },
-  {
-    'norcalli/nvim-colorizer.lua',
-    config = function()
-      require('colorizer').setup()
-    end,
-  },
-
-  -- remember the last colorscheme picked
-  { 'raddari/last-color.nvim' },
 }
 
 return M
