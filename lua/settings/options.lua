@@ -5,9 +5,11 @@ g.mapleader = ' ' -- set leader key
 
 opt.breakindent = true -- line wraps have the same level of indentation
 opt.colorcolumn = '+1'
+opt.complete:remove({ 't' })
 opt.completeopt:append({
   'menuone',
   'noinsert',
+  'noselect',
 })
 opt.conceallevel = 2 -- hide concealed text unless it has a custom replacement
 opt.confirm = true -- raise dialogue asking to save changed filed
@@ -39,6 +41,7 @@ opt.relativenumber = true -- show line number relative to current line
 opt.scrolloff = 9 -- minimum number of lines to keep around the cursor
 opt.shiftround = true -- round indent to multiples of 'shiftwidth'
 opt.shiftwidth = 2 -- number of spaces to use for each (auto)indent step
+opt.shortmess:append({ c = true })
 opt.showmode = false -- hide partial command in last line
 opt.sidescrolloff = 9 -- minimum number of columns to keep around the cursor
 opt.signcolumn = 'yes:2' -- always display sign column with 2 spaces
