@@ -1,6 +1,5 @@
 require('plugins.config.mini.align')
 require('plugins.config.mini.comment')
-require('plugins.config.mini.completion')
 require('plugins.config.mini.statusline')
 
 require('mini.indentscope').setup({})
