@@ -57,6 +57,19 @@ local M = {
   },
   { 'jose-elias-alvarez/null-ls.nvim' },
 
+  -- completion/snippets
+  {
+    'hrsh7th/nvim-cmp',
+    config = function()
+      require('plugins.config.cmp')
+    end,
+    requires = {
+      'hrsh7th/cmp-nvim-lsp',
+      'saadparwaiz1/cmp_luasnip',
+      'L3MON4D3/LuaSnip',
+    },
+  },
+
   -- telescope
   {
     'nvim-telescope/telescope.nvim',
