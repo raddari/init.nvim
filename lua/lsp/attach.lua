@@ -19,7 +19,6 @@ M.keymaps = function(client, bufnr)
   map('n', '[g', diagnostic.goto_prev, 'Goto next diagnostic')
   map('n', ']g', diagnostic.goto_next, 'Goto previous diagnostic')
   map('n', 'K', lsp.hover, 'Show hover information')
-  map('n', '<C-k>', lsp.signature_help, 'Show signature help')
   map('n', '<Leader>wx', require('telescope.builtin').diagnostics, 'Open workspace diagnostics')
   map('n', '<Leader>wa', lsp.add_workspace_folder, 'Add workspace folder')
   map('n', '<Leader>wd', lsp.remove_workspace_folder, 'Remove workspace folder')
@@ -29,6 +28,8 @@ M.keymaps = function(client, bufnr)
       lsp.format({ bufnr = bufnr })
     end
   end, 'Format document')
+
+  map({ 'i', 's' }, '<C-k>', lsp.signature_help, 'Show signature help')
 end
 
 M.document_highlights = function(client, bufnr)
