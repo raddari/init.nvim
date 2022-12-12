@@ -51,8 +51,8 @@ local M = {
       require('plugins.config.lspconfig')
     end,
     requires = {
-      { 'p00f/clangd_extensions.nvim' },
-      { 'simrat39/rust-tools.nvim' },
+      'p00f/clangd_extensions.nvim',
+      'simrat39/rust-tools.nvim',
     },
   },
   { 'jose-elias-alvarez/null-ls.nvim' },
@@ -78,8 +78,8 @@ local M = {
       require('plugins.config.telescope')
     end,
     requires = {
-      { 'nvim-lua/plenary.nvim' },
-      { 'kyazdani42/nvim-web-devicons' },
+      'nvim-lua/plenary.nvim',
+      'kyazdani42/nvim-web-devicons',
     },
   },
   {
@@ -115,11 +115,13 @@ local M = {
     run = function()
       require('nvim-treesitter.install').update({ with_sync = true })
     end,
+    requires = {
+      'nvim-treesitter/playground',
+      'nvim-treesitter/nvim-treesitter-textobjects',
+      'JoosepAlviste/nvim-ts-context-commentstring',
+      'windwp/nvim-ts-autotag',
+    },
   },
-  { 'nvim-treesitter/playground' },
-  { 'nvim-treesitter/nvim-treesitter-textobjects' },
-  { 'JoosepAlviste/nvim-ts-context-commentstring' },
-  { 'windwp/nvim-ts-autotag' },
 
   -- gitsigns
   {
