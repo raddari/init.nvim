@@ -11,4 +11,10 @@ M.on_attach = function(client, bufnr)
   lsp_attach.document_highlights(client, bufnr)
 end
 
+M.with = function(config)
+  local combined = { capabilities = M.capabilities, on_attach = M.on_attach }
+  vim.tbl_deep_extend('force', combined, config)
+  return combined
+end
+
 return M
