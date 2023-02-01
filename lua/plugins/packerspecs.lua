@@ -1,7 +1,4 @@
 local M = {
-  -- i am speed
-  { 'lewis6991/impatient.nvim' },
-
   -- colorscheme/theme/highlights
   require('theme.plugins').init(),
 
