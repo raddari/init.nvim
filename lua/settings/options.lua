@@ -1,7 +1,4 @@
-local g = vim.g
 local opt = vim.opt
-
-g.mapleader = ' ' -- set leader key
 
 opt.breakindent = true -- line wraps have the same level of indentation
 opt.colorcolumn = '+1'
