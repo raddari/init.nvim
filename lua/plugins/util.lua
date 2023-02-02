@@ -9,8 +9,8 @@ return {
     keys = {
       { '<Leader>fp', '<Cmd>Telescope projects<CR>', desc = 'List recently opened projects' },
     },
-    config = function(_, opts)
-      require('project_nvim').setup(opts)
+    config = function()
+      require('project_nvim').setup()
       require('telescope').load_extension('projects')
     end,
   },
