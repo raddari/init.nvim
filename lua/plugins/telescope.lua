@@ -2,7 +2,7 @@ return {
   {
     'nvim-telescope/telescope.nvim',
     keys = {
-      { '<Leader>t', '<Cmd>Telescope file_browser path=%:p:h<CR>',  desc = 'File browser' },
+      { '<Leader>t', '<Cmd>Telescope file_browser path=%:p:h<CR>', desc = 'File browser' },
       { '<Leader>fg', '<Cmd>Telescope live_grep<CR>', desc = 'Search for strings in workspace files' },
       { '<Leader>ff', '<Cmd>Telescope git_files<CR>', desc = 'Search for git versioned files in workspace' },
       { '<Leader>fa', '<Cmd>Telescope find_files<CR>', desc = 'Search for files in workspace' },
