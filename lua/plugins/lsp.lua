@@ -1,4 +1,5 @@
 return {
+  { 'folke/neodev.nvim' },
   {
     'williamboman/mason.nvim',
     opts = {
@@ -19,6 +20,9 @@ return {
   {
     'neovim/nvim-lspconfig',
     config = function()
+      require('neodev').setup({})
+      require('null-ls').setup(require('lsp.servers.null_ls'))
+
       require('mason-lspconfig').setup_handlers({
         function(server_name)
           local ok, config = pcall(require, ('lsp.servers.%s'):format(server_name))
@@ -30,8 +34,6 @@ return {
           require('clangd_extensions').setup(require('lsp.servers.clangd'))
         end,
       })
-
-      require('null-ls').setup(require('lsp.default').with(require('lsp.servers.null-ls')))
     end,
   },
   { 'p00f/clangd_extensions.nvim' },
