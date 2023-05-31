@@ -17,6 +17,7 @@ return {
         'regex',
         'rust',
         'vim',
+        'zig',
       },
       auto_install = true,
       highlight = {
