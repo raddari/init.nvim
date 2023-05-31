@@ -37,10 +37,8 @@ return {
 
       require('null-ls').setup(require('lsp.default').with(require('lsp.servers.null-ls')))
     end,
-    dependencies = {
-      'p00f/clangd_extensions.nvim',
-      'simrat39/rust-tools.nvim',
-    },
   },
+  { 'p00f/clangd_extensions.nvim' },
+  { 'simrat39/rust-tools.nvim' },
   { 'jose-elias-alvarez/null-ls.nvim' },
 }
