@@ -3,8 +3,6 @@ local null_ls = require('null-ls')
 local code_actions = null_ls.builtins.code_actions
 local diagnostics = null_ls.builtins.diagnostics
 local formatting = null_ls.builtins.formatting
-local hover = null_ls.builtins.hover
-local completion = null_ls.builtins.completion
 
 local config = {
   sources = {
@@ -17,6 +15,8 @@ local config = {
       end,
     }),
   },
+  on_attach = require('lsp.default').on_attach,
+  debug = true,
 }
 
 return config
