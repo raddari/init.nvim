@@ -29,16 +29,11 @@ return {
         ['clangd'] = function()
           require('clangd_extensions').setup(require('lsp.servers.clangd'))
         end,
-
-        ['rust_analyzer'] = function()
-          require('rust-tools').setup(require('lsp.servers.rust_analyzer'))
-        end,
       })
 
       require('null-ls').setup(require('lsp.default').with(require('lsp.servers.null-ls')))
     end,
   },
   { 'p00f/clangd_extensions.nvim' },
-  { 'simrat39/rust-tools.nvim' },
   { 'jose-elias-alvarez/null-ls.nvim' },
 }
