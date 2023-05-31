@@ -1,5 +1,16 @@
 local M = {}
 
+local format = function(client, bufnr)
+  vim.lsp.buf.format({
+    async = false,
+    buffer = bufnr,
+    name = vim.b[bufnr].format_provider,
+    filter = function()
+      return client.server_capabilities.documentFormattingProvider
+    end,
+  })
+end
+
 M.keymaps = function(client, bufnr)
   local lsp = vim.lsp.buf
   local diagnostic = vim.diagnostic
@@ -24,9 +35,7 @@ M.keymaps = function(client, bufnr)
   map('n', '<Leader>wd', lsp.remove_workspace_folder, 'Remove workspace folder')
   map('n', '<Leader>wl', lsp.list_workspace_folders, 'List workspace folders')
   map('n', '<Leader>F', function()
-    if client.server_capabilities.documentFormattingProvider then
-      lsp.format({ bufnr = bufnr })
-    end
+    format(client, bufnr)
   end, 'Format document')
 
   map({ 'i', 's' }, '<C-k>', lsp.signature_help, 'Show signature help')
@@ -81,7 +90,7 @@ M.codelens = function(client, bufnr)
 end
 
 M.format_on_save = function(client, bufnr)
-  if not client.server_capabilities.documentFormattingProvider or not vim.b[bufnr].format_on_save then
+  if not vim.b[bufnr].format_on_save then
     return
   end
 
@@ -92,7 +101,7 @@ M.format_on_save = function(client, bufnr)
     group = group,
     buffer = bufnr,
     callback = function()
-      vim.lsp.buf.format({ buffer = bufnr })
+      format(client, bufnr)
     end,
   })
 end
