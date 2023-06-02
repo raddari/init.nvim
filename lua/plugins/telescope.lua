@@ -35,6 +35,11 @@ return {
           preview_cutoff = 120,
         },
       },
+      pickers = {
+        colorscheme = {
+          enable_preview = true,
+        },
+      },
     },
     dependencies = {
       'nvim-lua/plenary.nvim',
