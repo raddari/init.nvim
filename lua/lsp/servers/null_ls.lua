@@ -6,7 +6,6 @@ local formatting = null_ls.builtins.formatting
 
 local config = {
   sources = {
-    code_actions.gitsigns,
     diagnostics.fish,
     formatting.fish_indent,
     formatting.stylua.with({
