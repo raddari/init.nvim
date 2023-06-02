@@ -1,5 +1,4 @@
 local config = {}
-local icons = require('theme.icons')
 
 config.server = {
   cmd = {
@@ -30,12 +29,6 @@ config.extensions = {
     only_current_line = true,
     parameter_hints_prefix = ' ',
     other_hints_prefix = ' ',
-  },
-  memory_usage = {
-    border = icons.border,
-  },
-  symbol_info = {
-    border = icons.border,
   },
 }
 

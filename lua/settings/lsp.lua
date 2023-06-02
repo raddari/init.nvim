@@ -1,16 +1,15 @@
-local icons = require('theme.icons')
-
 vim.diagnostic.config({
   signs = true,
   severity_sort = true,
   virtual_text = false,
 })
 
+local box = '◾'
 local signs = {
-  Error = icons.error,
-  Warn = icons.warn,
-  Hint = icons.hint,
-  Info = icons.info,
+  Error = box,
+  Warn = box,
+  Hint = box,
+  Info = box,
 }
 
 for type, icon in pairs(signs) do

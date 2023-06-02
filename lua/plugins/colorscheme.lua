@@ -1,16 +1,11 @@
 return {
   {
-    'rebelot/kanagawa.nvim',
-    name = 'kanagawa',
-    opts = {
-      commentStyle = {},
-      keywordStyle = {},
-      dimInactive = false,
-      globalStatus = true,
-    },
-  },
-  {
-    'cocopon/iceberg.vim',
-    name = 'iceberg',
+    'bluz71/vim-nightfly-colors',
+    name = 'nightfly',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.g.nightflyItalics = false
+    end,
   },
 }

@@ -15,4 +15,6 @@ vim.g.mapleader = ' '
 
 require('lazy').setup('plugins')
 require('settings')
-require('theme')
+
+local theme = require('last-color').recall() or 'minischeme'
+vim.cmd.colorscheme(theme)
