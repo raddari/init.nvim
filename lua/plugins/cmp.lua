@@ -3,12 +3,12 @@ return {
     'hrsh7th/nvim-cmp',
     config = function()
       local cmp = require('cmp')
-      local snip = require('luasnip')
+      local snippy = require('snippy')
 
       cmp.setup({
         snippet = {
           expand = function(args)
-            snip.lsp_expand(args.body)
+            snippy.expand_snippet(args.body)
           end,
         },
         mapping = cmp.mapping.preset.insert({
@@ -25,8 +25,8 @@ return {
           ['<Tab>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
               cmp.select_next_item()
-            elseif snip.expand_or_jumpable() then
-              snip.expand_or_jump()
+            elseif snippy.can_expand_or_advance() then
+              snippy.expand_or_advance()
             else
               fallback()
             end
@@ -34,8 +34,8 @@ return {
           ['<S-Tab>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
               cmp.select_prev_item()
-            elseif snip.jumpable(-1) then
-              snip.jump(-1)
+            elseif snippy.can_jump(-1) then
+              snippy.previous()
             else
               fallback()
             end
@@ -43,14 +43,15 @@ return {
         }),
         sources = {
           { name = 'nvim_lsp' },
-          { name = 'luasnip' },
+          { name = 'snippy' },
         },
       })
     end,
     dependencies = {
       'hrsh7th/cmp-nvim-lsp',
-      'saadparwaiz1/cmp_luasnip',
-      'L3MON4D3/LuaSnip',
+      'dcampos/cmp-snippy',
+      'dcampos/nvim-snippy',
+      'honza/vim-snippets',
     },
   },
 }
