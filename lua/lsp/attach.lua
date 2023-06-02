@@ -1,13 +1,13 @@
 local M = {}
 
 local format = function(client, bufnr)
+  if not client.server_capabilities.documentFormattingProvider then
+    return
+  end
   vim.lsp.buf.format({
     async = false,
     buffer = bufnr,
     name = vim.b[bufnr].format_provider,
-    filter = function()
-      return client.server_capabilities.documentFormattingProvider
-    end,
   })
 end
 
@@ -90,7 +90,7 @@ M.codelens = function(client, bufnr)
 end
 
 M.format_on_save = function(client, bufnr)
-  if not vim.b[bufnr].format_on_save then
+  if vim.b[bufnr].disable_format_on_save then
     return
   end
 
