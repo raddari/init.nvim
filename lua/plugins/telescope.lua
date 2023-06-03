@@ -2,10 +2,10 @@ return {
   {
     'nvim-telescope/telescope.nvim',
     keys = {
-      { '<Leader>t', '<Cmd>Telescope file_browser path=%:p:h<CR>', desc = 'File browser' },
+      { '<Leader>t', '<Cmd>Telescope file_browser path=%:p:h hidden=true<CR>', desc = 'File browser' },
       { '<Leader>fg', '<Cmd>Telescope live_grep<CR>', desc = 'Search for strings in workspace files' },
       { '<Leader>ff', '<Cmd>Telescope git_files<CR>', desc = 'Search for git versioned files in workspace' },
-      { '<Leader>fa', '<Cmd>Telescope find_files<CR>', desc = 'Search for files in workspace' },
+      { '<Leader>fa', '<Cmd>Telescope find_files hidden=true<CR>', desc = 'Search for files in workspace' },
       { '<Leader>fb', '<Cmd>Telescope buffers<CR>', desc = 'Open buffer picker' },
       { '<Leader>fc', '<Cmd>Telescope colorscheme<CR>', desc = 'Open colorscheme picker' },
       { '<Leader>fh', '<Cmd>Telescope help_tags<CR>', desc = 'Search for help pages' },
