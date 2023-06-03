@@ -1,5 +1,11 @@
 return {
-  { 'folke/neodev.nvim' },
+  {
+    'folke/neodev.nvim',
+    opts = {
+      setup_jsonls = false,
+      lspconfig = false,
+    },
+  },
   {
     'williamboman/mason.nvim',
     opts = {
@@ -13,29 +19,36 @@ return {
       },
     },
   },
-  {
-    'williamboman/mason-lspconfig.nvim',
-    opts = { automatic_installation = true },
-  },
+  { 'williamboman/mason-lspconfig.nvim' },
   {
     'neovim/nvim-lspconfig',
     config = function()
-      require('neodev').setup({})
-      require('null-ls').setup(require('lsp.servers.null_ls'))
-
-      require('mason-lspconfig').setup_handlers({
-        function(server_name)
-          local ok, config = pcall(require, ('lsp.servers.%s'):format(server_name))
-          config = ok and config or {}
-          require('lspconfig')[server_name].setup(require('lsp.default').with(config))
+      local lsp_default = require('lsp.default')
+      local servers = {
+        ['null-ls'] = function()
+          lsp_default.with(require('lsp.servers.null_ls'))
         end,
-
         ['clangd'] = function()
           require('clangd_extensions').setup(require('lsp.servers.clangd'))
         end,
-      })
+      }
+
+      for _, server_name in ipairs(require('mason-lspconfig').get_installed_servers()) do
+        if not servers[server_name] then
+          servers[server_name] = function()
+            local ok, config = pcall(require, ('lsp.servers.%s'):format(server_name))
+            config = ok and config or {}
+            require('lspconfig')[server_name].setup(lsp_default.with(config))
+          end
+        end
+
+        for _, setup in pairs(servers) do
+          setup()
+        end
+      end
     end,
   },
-  { 'p00f/clangd_extensions.nvim' },
   { 'jose-elias-alvarez/null-ls.nvim' },
+  { 'p00f/clangd_extensions.nvim' },
+  { 'b0o/SchemaStore.nvim' },
 }

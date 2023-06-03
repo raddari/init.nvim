@@ -13,8 +13,7 @@ end
 
 M.with = function(config)
   local combined = { capabilities = M.capabilities, on_attach = M.on_attach }
-  vim.tbl_deep_extend('force', combined, config)
-  return combined
+  return vim.tbl_deep_extend('force', combined, config)
 end
 
 return M

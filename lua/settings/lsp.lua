@@ -1,3 +1,5 @@
+vim.lsp.set_log_level('info')
+
 vim.diagnostic.config({
   signs = true,
   severity_sort = true,
