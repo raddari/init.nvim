@@ -2,7 +2,11 @@ return {
   {
     'nvim-telescope/telescope.nvim',
     keys = {
-      { '<Leader>t', '<Cmd>Telescope file_browser path=%:p:h hidden=true<CR>', desc = 'File browser' },
+      {
+        '<Leader>t',
+        '<Cmd>Telescope file_browser path=%:p:h select_buffer=true hidden=true<CR>',
+        desc = 'File browser',
+      },
       { '<Leader>fg', '<Cmd>Telescope live_grep<CR>', desc = 'Search for strings in workspace files' },
       { '<Leader>ff', '<Cmd>Telescope git_files<CR>', desc = 'Search for git versioned files in workspace' },
       { '<Leader>fa', '<Cmd>Telescope find_files hidden=true<CR>', desc = 'Search for files in workspace' },
@@ -41,22 +45,16 @@ return {
         },
       },
     },
+    config = function(_, opts)
+      require('telescope').setup(opts)
+      require('telescope').load_extension('fzf')
+      require('telescope').load_extension('file_browser')
+    end,
     dependencies = {
       'nvim-lua/plenary.nvim',
       'kyazdani42/nvim-web-devicons',
+      'nvim-telescope/telescope-file-browser.nvim',
+      { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
     },
-  },
-  {
-    'nvim-telescope/telescope-file-browser.nvim',
-    config = function()
-      require('telescope').load_extension('file_browser')
-    end,
-  },
-  {
-    'nvim-telescope/telescope-fzf-native.nvim',
-    build = 'make',
-    config = function()
-      require('telescope').load_extension('fzf')
-    end,
   },
 }
