@@ -10,6 +10,7 @@ return {
         'c',
         'cpp',
         'comment',
+        'dap_repl',
         'fish',
         'lua',
         'markdown',
@@ -106,8 +107,10 @@ return {
     config = function(_, opts)
       require('nvim-treesitter.configs').setup(opts)
     end,
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter-textobjects',
+      'JoosepAlviste/nvim-ts-context-commentstring',
+      'windwp/nvim-ts-autotag',
+    },
   },
-  { 'nvim-treesitter/nvim-treesitter-textobjects' },
-  { 'JoosepAlviste/nvim-ts-context-commentstring' },
-  { 'windwp/nvim-ts-autotag' },
 }
