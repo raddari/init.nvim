@@ -4,7 +4,7 @@ local continue = function()
   local path = string.format('%s/.vscode/launch.json', root_dir)
 
   if vim.fn.filereadable(path) then
-    require('dap.ext.vscode').load_launchjs(path)
+    require('dap.ext.vscode').load_launchjs(path, { lldb = { 'c', 'cpp' } })
   end
   require('dap').continue()
 end
