@@ -26,7 +26,7 @@ return {
       local lsp_default = require('lsp.default')
       local servers = {
         ['null-ls'] = function()
-          lsp_default.with(require('lsp.servers.null_ls'))
+          require('null-ls').setup(lsp_default.with(require('lsp.servers.null_ls')))
         end,
         ['clangd'] = function()
           require('clangd_extensions').setup(require('lsp.servers.clangd'))
