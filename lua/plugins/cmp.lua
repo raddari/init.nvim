@@ -6,6 +6,9 @@ return {
       local snippy = require('snippy')
 
       cmp.setup({
+        enabled = function()
+          return vim.api.nvim_buf_get_option(0, 'buftype') ~= 'prompt' or require('cmp_dap').is_dap_buffer()
+        end,
         snippet = {
           expand = function(args)
             snippy.expand_snippet(args.body)
@@ -46,9 +49,19 @@ return {
           { name = 'snippy' },
         },
       })
+
+      cmp.setup.filetype({ 'dap-repl', 'dapui_watches', 'dapui_hover' }, {
+        enabled = function()
+          return require('dap').session().capabilities.supportsCompletionsRequest
+        end,
+        sources = {
+          { name = 'dap' },
+        },
+      })
     end,
     dependencies = {
       'hrsh7th/cmp-nvim-lsp',
+      'rcarriga/cmp-dap',
       'dcampos/cmp-snippy',
       'dcampos/nvim-snippy',
       'honza/vim-snippets',

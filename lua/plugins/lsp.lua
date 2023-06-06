@@ -4,6 +4,10 @@ return {
     opts = {
       setup_jsonls = false,
       lspconfig = false,
+      library = {
+        plugins = { 'nvim-dap-ui' },
+        types = true,
+      },
     },
   },
   {
