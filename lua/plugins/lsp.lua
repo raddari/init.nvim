@@ -51,8 +51,10 @@ return {
         end
       end
     end,
+    dependencies = {
+      'jose-elias-alvarez/null-ls.nvim',
+      'p00f/clangd_extensions.nvim',
+      'b0o/SchemaStore.nvim',
+    },
   },
-  { 'jose-elias-alvarez/null-ls.nvim' },
-  { 'p00f/clangd_extensions.nvim' },
-  { 'b0o/SchemaStore.nvim' },
 }
