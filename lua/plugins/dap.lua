@@ -30,7 +30,7 @@ return {
       {
         '<F9>',
         function()
-          require('dap').step_into()
+          require('dap').step_into({ askForTargets = true })
         end,
         desc = 'Step into',
       },
@@ -54,6 +54,13 @@ return {
           require('dap').set_breakpoint()
         end,
         desc = 'Set breakpoint',
+      },
+      {
+        '<Leader>dc',
+        function()
+          require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))
+        end,
+        desc = 'Set conditional breakpoint',
       },
       {
         '<Leader>dl',
@@ -111,12 +118,30 @@ return {
     },
     config = function()
       local dap = require('dap')
+      local dapui = require('dapui')
+
+      require('nvim-dap-repl-highlights').setup()
+      require('nvim-dap-virtual-text').setup({ all_references = true })
+      dapui.setup()
+
       dap.defaults.fallback.focus_terminal = true
+      dap.defaults.fallback.steppingGranularity = 'line'
+
       dap.adapters.lldb = {
         type = 'executable',
         command = 'lldb-vscode',
         name = 'lldb',
       }
+
+      dap.listeners.after.event_initialized['dapui_config'] = function()
+        dapui.open()
+      end
+      dap.listeners.before.event_terminated['dapui_config'] = function()
+        dapui.close()
+      end
+      dap.listeners.before.event_exited['dapui_config'] = function()
+        dapui.close()
+      end
     end,
     dependencies = {
       'rcarriga/nvim-dap-ui',
