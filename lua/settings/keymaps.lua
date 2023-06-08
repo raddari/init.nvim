@@ -1,9 +1,24 @@
-local map = vim.keymap.set
--- splits
-map('n', '<Leader>\\', '<Cmd>vsplit<CR>', { desc = 'Vertical split' })
-map('n', '<Leader>-', '<Cmd>split<CR>', { desc = 'Horizontal split' })
--- util
-map('n', '<Leader>lo', '<Cmd>source %<CR>', { desc = 'Source current file' })
-map('n', '<Leader>bd', '<Cmd>bd<CR>', { desc = 'Remove current buffer' })
-map('n', '<Leader>m', '<Cmd>silent make!<CR><Cmd>cope<CR>', { desc = 'Build and open compiler output' })
-map('n', '<Leader>M', '<Cmd>make!<CR>', { desc = 'Build' })
+require('util.keymap').set({
+  -- splits
+  { '<Leader>\\', '<Cmd>vsplit<CR>', desc = 'Vertical split' },
+  { '<Leader>-', '<Cmd>split<CR>', desc = 'Horizontal split' },
+  -- util
+  { '<Leader>lo', '<Cmd>source %<CR>', desc = 'Source current file' },
+  { '<Leader>bd', '<Cmd>bd<CR>', desc = 'Remove current buffer' },
+  -- compile/build
+  {
+    '<Leader>m',
+    function()
+      vim.cmd.make({ silent = true, bang = true })
+      vim.cmd.copen()
+    end,
+    desc = 'Build and open compiler output',
+  },
+  {
+    '<Leader>M',
+    function()
+      vim.cmd.make()
+    end,
+    desc = 'Build',
+  },
+})
