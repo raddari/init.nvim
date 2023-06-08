@@ -43,6 +43,5 @@ return {
         virt_text_pos = 'right_align', -- 'eol' | 'overlay' | 'right_align'
       },
     },
-    dependencies = { 'nvim-lua/plenary.nvim' },
   },
 }
