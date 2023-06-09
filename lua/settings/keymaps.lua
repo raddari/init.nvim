@@ -9,7 +9,7 @@ require('util.keymap').set({
   {
     '<Leader>m',
     function()
-      vim.cmd.make({ silent = true, bang = true })
+      vim.cmd.make({ bang = true, mods = { silent = true } })
       vim.cmd.copen()
     end,
     desc = 'Build and open compiler output',
