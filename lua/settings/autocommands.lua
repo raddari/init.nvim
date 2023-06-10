@@ -11,15 +11,16 @@ autocmd({ 'TextYankPost' }, {
 
 autocmd({ 'FileType' }, {
   pattern = { 'c', 'cpp' },
-  desc = 'Try to find a Makefile for C/C++ projects',
+  desc = 'Try to find a Make or Ninja file for C/C++ projects',
   callback = function(_)
     local root_dir = U.root_dir()
-    local makefile = vim.fs.find(function(name, _)
-      return name:match('^[Mm]akefile$')
+    local file = vim.fs.find(function(name, _)
+      return name:match('^build%.ninja$') or name:match('^[Mm]akefile$')
     end, { path = root_dir, type = 'file', limit = 1 })[1]
-    if makefile then
-      local dir = vim.fs.dirname(makefile)
-      vim.opt_local.makeprg = ([[make -C "%s" $*]]):format(dir)
+    if file then
+      local dir = vim.fs.dirname(file)
+      local cmd = file == 'build.ninja' and 'ninja' or 'make'
+      vim.opt_local.makeprg = ([[%s -C "%s" $*]]):format(cmd, dir)
     end
   end,
 })
