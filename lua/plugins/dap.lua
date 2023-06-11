@@ -1,11 +1,14 @@
 local continue = function()
-  local workspaces = vim.lsp.buf.list_workspace_folders()
-  local root_dir = (#workspaces > 0) and workspaces[0] or vim.fn.getcwd()
-  local path = string.format('%s/.vscode/launch.json', root_dir)
+  local root_dir = vim.lsp.buf.list_workspace_folders()[1] or vim.fn.getcwd()
 
-  if vim.fn.filereadable(path) then
-    require('dap.ext.vscode').load_launchjs(path, { lldb = { 'c', 'cpp' } })
+  local launch_config = vim.fs.find(function(name, path)
+    return name:match('^launch%.json$') and path:match('%.vscode')
+  end, { path = root_dir, type = 'file', limit = 1 })[1]
+
+  if launch_config then
+    require('dap.ext.vscode').load_launchjs(launch_config, { lldb = { 'c', 'cpp' } })
   end
+
   require('dap').continue()
 end
 
