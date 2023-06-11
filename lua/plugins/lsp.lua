@@ -27,20 +27,20 @@ return {
   {
     'neovim/nvim-lspconfig',
     config = function()
-      local lsp_default = require('lsp.default')
+      local lsp_default = require('config.lsp.default')
       local servers = {
         ['null-ls'] = function()
-          require('null-ls').setup(lsp_default.with(require('lsp.servers.null_ls')))
+          require('null-ls').setup(lsp_default.with(require('config.lsp.servers.null_ls')))
         end,
         ['clangd'] = function()
-          require('clangd_extensions').setup(require('lsp.servers.clangd'))
+          require('clangd_extensions').setup(require('config.lsp.servers.clangd'))
         end,
       }
 
       for _, server_name in ipairs(require('mason-lspconfig').get_installed_servers()) do
         if not servers[server_name] then
           servers[server_name] = function()
-            local ok, config = pcall(require, ('lsp.servers.%s'):format(server_name))
+            local ok, config = pcall(require, ('config.lsp.servers.%s'):format(server_name))
             config = ok and config or {}
             require('lspconfig')[server_name].setup(lsp_default.with(config))
           end

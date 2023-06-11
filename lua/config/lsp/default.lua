@@ -1,4 +1,4 @@
-local lsp_attach = require('lsp.attach')
+local lsp_attach = require('config.lsp.attach')
 local M = {}
 
 -- TODO(raddari): refactor this into cmp config

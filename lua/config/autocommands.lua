@@ -13,7 +13,7 @@ autocmd({ 'FileType' }, {
   pattern = { 'c', 'cpp' },
   desc = 'Try to find a Make or Ninja file for C/C++ projects',
   callback = function(_)
-    local root_dir = U.root_dir()
+    local root_dir = require('util').root_dir()
     local file = vim.fs.find(function(name, _)
       return name:match('^build%.ninja$') or name:match('^[Mm]akefile$')
     end, { path = root_dir, type = 'file', limit = 1 })[1]
@@ -24,7 +24,3 @@ autocmd({ 'FileType' }, {
     end
   end,
 })
-
-U.root_dir = function()
-  return vim.lsp.buf.list_workspace_folders()[1] or vim.fn.getcwd()
-end

@@ -1,16 +1,18 @@
----@class KeymapUtil
-local M = {}
+---@class Util
+local M = {
+  keymap = {},
+}
 
 local set_all = function(specs)
   for _, spec in ipairs(specs) do
     if type(spec) == 'table' then
-      M.set(spec)
+      M.keymap.set(spec)
     end
   end
 end
 
 ---@param spec table|table[]
-M.set = function(spec)
+M.keymap.set = function(spec)
   if type(spec[1]) == 'table' then
     set_all(spec)
     return
@@ -34,6 +36,10 @@ M.set = function(spec)
   end
 
   vim.keymap.set(mode, lhs, rhs, opts)
+end
+
+M.root_dir = function()
+  return vim.lsp.buf.list_workspace_folders()[1] or vim.fn.getcwd()
 end
 
 return M

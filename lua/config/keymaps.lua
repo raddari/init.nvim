@@ -1,4 +1,4 @@
-require('util.keymap').set({
+require('util').keymap.set({
   -- splits
   { '<Leader>\\', '<Cmd>vsplit<CR>', desc = 'Vertical split' },
   { '<Leader>-', '<Cmd>split<CR>', desc = 'Horizontal split' },

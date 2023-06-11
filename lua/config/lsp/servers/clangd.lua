@@ -14,7 +14,7 @@ config.server = {
     semanticHighlighting = true,
   },
   on_attach = function(client, bufnr)
-    require('lsp.default').on_attach(client, bufnr)
+    require('config.lsp.default').on_attach(client, bufnr)
     vim.keymap.set(
       'n',
       '<Leader>gs',
