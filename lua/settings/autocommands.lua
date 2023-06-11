@@ -19,7 +19,7 @@ autocmd({ 'FileType' }, {
     end, { path = root_dir, type = 'file', limit = 1 })[1]
     if file then
       local dir = vim.fs.dirname(file)
-      local cmd = file == 'build.ninja' and 'ninja' or 'make'
+      local cmd = vim.fs.basename(file) == 'build.ninja' and 'ninja' or 'make'
       vim.opt_local.makeprg = ([[%s -C "%s" $*]]):format(cmd, dir)
     end
   end,
