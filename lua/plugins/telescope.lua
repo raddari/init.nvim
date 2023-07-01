@@ -4,7 +4,7 @@ return {
     keys = {
       {
         '<Leader>t',
-        '<Cmd>Telescope file_browser path=%:p:h select_buffer=true hidden=true<CR>',
+        '<Cmd>Telescope file_browser path=%:p:h select_buffer=true hidden=true grouped=true<CR>',
         desc = 'File browser',
       },
       { '<Leader>fg', '<Cmd>Telescope live_grep<CR>', desc = 'Search for strings in workspace files' },
