@@ -42,4 +42,17 @@ M.root_dir = function()
   return vim.lsp.buf.list_workspace_folders()[1] or vim.fn.getcwd()
 end
 
+M.hl_overrides = function(colors_name, overrides)
+  local group = vim.api.nvim_create_augroup('hl-overrides', {})
+  vim.api.nvim_create_autocmd({ 'Colorscheme' }, {
+    group = group,
+    pattern = { colors_name },
+    callback = function(_)
+      for hl, override in pairs(overrides) do
+        vim.api.nvim_set_hl(0, hl, override)
+      end
+    end,
+  })
+end
+
 return M
