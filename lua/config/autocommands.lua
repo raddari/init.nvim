@@ -1,5 +1,3 @@
----@class AuUtil
-local U = {}
 local autocmd = vim.api.nvim_create_autocmd
 
 autocmd({ 'TextYankPost' }, {
@@ -21,6 +19,27 @@ autocmd({ 'FileType' }, {
       local dir = vim.fs.dirname(file)
       local cmd = vim.fs.basename(file) == 'build.ninja' and 'ninja' or 'make'
       vim.opt_local.makeprg = ([[%s -C "%s" $*]]):format(cmd, dir)
+    end
+  end,
+})
+
+autocmd({ 'FileType' }, {
+  pattern = { 'cpp' },
+  callback = function(_)
+    vim.opt.commentstring = '// %s'
+  end,
+})
+
+autocmd({ 'ColorScheme' }, {
+  pattern = { '*' },
+  callback = function(_)
+    local overrides = {
+      ['@lsp.type.property.cpp'] = { link = '@property.cpp' },
+      ['@storageclass'] = { link = '@keyword' },
+      ['@type.qualifier'] = { link = '@keyword' },
+    }
+    for hl, override in pairs(overrides) do
+      vim.api.nvim_set_hl(0, hl, override)
     end
   end,
 })
