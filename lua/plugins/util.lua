@@ -3,4 +3,5 @@ return {
   { 'folke/lazy.nvim' },
   { 'raddari/last-color.nvim' },
   { 'nvim-lua/plenary.nvim' },
+  { 'nvim-tree/nvim-web-devicons' },
 }
