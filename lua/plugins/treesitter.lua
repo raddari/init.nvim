@@ -10,7 +10,6 @@ return {
         'c',
         'cpp',
         'comment',
-        'dap_repl',
         'fish',
         'lua',
         'markdown',

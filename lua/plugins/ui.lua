@@ -34,10 +34,6 @@ return {
   {
     'lewis6991/gitsigns.nvim',
     lazy = false,
-    keys = {
-      { '<Leader>vb', '<Cmd>Gitsigns toggle_current_line_blame<CR>', desc = 'Toggle line blame' },
-      { '<Leader>vd', '<Cmd>Gitsigns toggle_word_diff<CR>', desc = 'Toggle word diff' },
-    },
     opts = {
       current_line_blame_opts = {
         virt_text_pos = 'right_align', -- 'eol' | 'overlay' | 'right_align'
