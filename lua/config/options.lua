@@ -27,7 +27,6 @@ opt.ignorecase = true -- use case-insensitive search
 opt.laststatus = 3 -- global statusline
 opt.list = true -- show eol trailing spaces
 opt.matchpairs:append({ '<:>' }) -- include < > in pair matching
-opt.mouse = '' -- disable mouse mode entirely
 opt.nrformats:append({ 'alpha' }) -- increment <C-a> and decrement <C-x> alphabet
 opt.number = true -- show number line
 opt.path:remove({ '/usr/include' })
