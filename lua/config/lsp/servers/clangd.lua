@@ -1,6 +1,4 @@
-local config = {}
-
-config.server = {
+local config = {
   cmd = {
     'clangd',
     '--completion-style=bundled',
@@ -22,14 +20,6 @@ config.server = {
       { desc = 'Switch between source/header', buffer = bufnr }
     )
   end,
-}
-
-config.extensions = {
-  inlay_hints = {
-    only_current_line = true,
-    parameter_hints_prefix = '',
-    other_hints_prefix = ' ',
-  },
 }
 
 return config

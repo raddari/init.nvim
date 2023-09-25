@@ -26,38 +26,35 @@ return {
   {
     'neovim/nvim-lspconfig',
     config = function()
-      local lsp_default = require('config.lsp.default')
-      local default_setup = function(server_name)
-        return function()
-          local ok, config = pcall(require, ('config.lsp.servers.%s'):format(server_name))
-          config = ok and config or {}
-          require('lspconfig')[server_name].setup(lsp_default.with(config))
-        end
-      end
-
+      local mason_servers = require('mason-lspconfig').get_installed_servers()
       local servers = {
-        ['null-ls'] = function()
-          require('null-ls').setup(lsp_default.with(require('config.lsp.servers.null_ls')))
-        end,
-        ['clangd'] = function()
-          require('clangd_extensions').setup(require('config.lsp.servers.clangd'))
-        end,
-        ['zls'] = default_setup('zls'),
+        'clangd',
+        'zls',
+        unpack(mason_servers),
       }
 
-      for _, server_name in ipairs(require('mason-lspconfig').get_installed_servers()) do
-        if not servers[server_name] then
-          servers[server_name] = default_setup(server_name)
-        end
+      local lsp_default = require('config.lsp.default')
+      for _, name in ipairs(servers) do
+        local ok, config = pcall(require, ('config.lsp.servers.%s'):format(name))
+        config = ok and config or {}
+        require('lspconfig')[name].setup(lsp_default.with(config))
       end
-      for _, setup in pairs(servers) do
-        setup()
-      end
+
+      require('null-ls').setup(lsp_default.with(require('config.lsp.servers.null_ls')))
     end,
     dependencies = {
       'jose-elias-alvarez/null-ls.nvim',
-      'p00f/clangd_extensions.nvim',
       'b0o/SchemaStore.nvim',
+    },
+  },
+  {
+    'https://git.sr.ht/~p00f/clangd_extensions.nvim',
+    opts = {
+      inlay_hints = {
+        only_current_line = true,
+        parameter_hints_prefix = '',
+        other_hints_prefix = ' ',
+      },
     },
   },
 }
