@@ -5,11 +5,21 @@ return {
     lazy = false,
     priority = 1000,
     opts = {
-      transparent_background = true,
       no_italic = true,
       integrations = {
         mini = true,
         nvimtree = false,
+      },
+    },
+  },
+  {
+    'folke/tokyonight.nvim',
+    lazy = false,
+    priority = 1000,
+    opts = {
+      styles = {
+        comments = { italic = false },
+        keywords = { italic = false },
       },
     },
   },
