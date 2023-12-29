@@ -35,10 +35,6 @@ return {
         },
       },
       autotag = { enable = true },
-      context_commentstring = {
-        enable = true,
-        enable_autocmd = false,
-      },
       textobjects = {
         select = {
           enable = true,
@@ -108,8 +104,8 @@ return {
     end,
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
-      'JoosepAlviste/nvim-ts-context-commentstring',
       'windwp/nvim-ts-autotag',
+      { 'JoosepAlviste/nvim-ts-context-commentstring', opts = { enable = true, enable_autocmd = false } },
     },
   },
 }
