@@ -6,7 +6,7 @@ vim.diagnostic.config({
   virtual_text = false,
 })
 
-local box = '◾'
+local box = '⏹'
 local signs = {
   Error = box,
   Warn = box,
