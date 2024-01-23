@@ -2,21 +2,14 @@ return {
   {
     'echasnovski/mini.nvim',
     config = function()
-      require('mini.align').setup({
-        mappings = {
-          start = 'ga',
-          start_with_preview = 'gA',
-        },
-      })
-
       require('mini.comment').setup({
         options = {
-          mappings = {
-            comment_line = '<C-/>',
-          },
           custom_commentstring = function()
             return require('ts_context_commentstring.internal').calculate_commentstring() or vim.bo.commentstring
           end,
+        },
+        mappings = {
+          comment_line = '<C-/>',
         },
       })
 
@@ -25,6 +18,7 @@ return {
       })
 
       require('mini.ai').setup({})
+      require('mini.align').setup({})
       require('mini.bracketed').setup({})
       require('mini.bufremove').setup({})
       require('mini.indentscope').setup({})
