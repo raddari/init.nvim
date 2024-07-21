@@ -1,5 +1,7 @@
 local opt = vim.opt
 
+vim.g.zig_fmt_parse_errors = 0
+
 opt.breakindent = true -- line wraps have the same level of indentation
 opt.colorcolumn = '+1'
 opt.complete:remove({ 't' })
@@ -45,9 +47,8 @@ opt.smartcase = true -- case sensitive search when search term contains an upper
 opt.softtabstop = 2 -- number of spaces <Tab> counts for
 opt.splitbelow = true -- :split puts new window below current
 opt.splitright = true -- :vsplit puts new window to the right
-opt.tabstop = 2 -- see 'softtabstop'
 opt.termguicolors = true -- enable 24-bit RGB color
-opt.textwidth = 120
+opt.textwidth = 100
 opt.undofile = true -- save undo history to file
 opt.undolevels = 150 -- max number of changes that can be undone
 opt.updatetime = 300 -- write swapfile after this delay (ms)

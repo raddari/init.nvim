@@ -1,20 +1,17 @@
-vim.lsp.set_log_level('info')
-
 vim.diagnostic.config({
-  signs = true,
   severity_sort = true,
   virtual_text = false,
+  signs = function()
+    local box = '⏹'
+    local signs = { text = {} }
+    for _, diagnostic in ipairs({
+      vim.diagnostic.severity.ERROR,
+      vim.diagnostic.severity.WARN,
+      vim.diagnostic.severity.HINT,
+      vim.diagnostic.severity.INFO,
+    }) do
+      signs.text[diagnostic] = box
+    end
+    return signs
+  end,
 })
-
-local box = '⏹'
-local signs = {
-  Error = box,
-  Warn = box,
-  Hint = box,
-  Info = box,
-}
-
-for name, icon in pairs(signs) do
-  local hl = 'DiagnosticSign' .. name
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = '' })
-end

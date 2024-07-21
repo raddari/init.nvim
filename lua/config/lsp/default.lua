@@ -1,7 +1,11 @@
 local M = {}
 
 -- TODO(raddari): refactor this into cmp config
-M.capabilities = require('cmp_nvim_lsp').default_capabilities()
+M.capabilities = vim.tbl_deep_extend(
+  'force',
+  vim.lsp.protocol.make_client_capabilities(),
+  require('cmp_nvim_lsp').default_capabilities()
+)
 
 M.on_attach = function(client, bufnr)
   local lsp_attach = require('config.lsp.attach')

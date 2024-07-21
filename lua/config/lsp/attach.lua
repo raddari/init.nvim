@@ -94,10 +94,6 @@ M.codelens = function(client, bufnr)
 end
 
 M.format_on_save = function(client, bufnr)
-  if vim.b[bufnr].disable_format_on_save then
-    return
-  end
-
   local group = vim.api.nvim_create_augroup('LspFormatting', { clear = false })
   vim.api.nvim_clear_autocmds({ group = group, buffer = bufnr })
 
@@ -105,6 +101,10 @@ M.format_on_save = function(client, bufnr)
     group = group,
     buffer = bufnr,
     callback = function()
+      if vim.b[bufnr].disable_format_on_save then
+        return true
+      end
+
       format(client, bufnr)
     end,
   })
