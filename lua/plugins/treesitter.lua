@@ -1,111 +1,56 @@
-return {
-  {
-    'nvim-treesitter/nvim-treesitter',
-    build = function()
-      require('nvim-treesitter.install').update({ with_sync = true })
-    end,
-    opts = {
-      ensure_installed = {
-        'bash',
-        'c',
-        'cpp',
-        'comment',
-        'fish',
-        'lua',
-        'markdown',
-        'markdown_inline',
-        'regex',
-        'rust',
-        'vim',
-        'zig',
-      },
-      auto_install = true,
-      highlight = {
+local M = {}
+
+M.setup = function()
+  require('nvim-treesitter.configs').setup({
+    ensure_installed = {
+      'bash',
+      'c',
+      'cpp',
+      'comment',
+      'fish',
+      'lua',
+      'markdown',
+      'markdown_inline',
+      'regex',
+      'vim',
+      'zig',
+    },
+    auto_install = true,
+    highlight = { enable = true },
+    textobjects = {
+      select = {
         enable = true,
-      },
-      indent = { enable = false },
-      incremental_selection = {
-        enable = true,
+        lookahead = true,
         keymaps = {
-          init_selection = '}',
-          node_incremental = '}',
-          node_decremental = '{',
-          scope_incremental = '<Nop>',
-          scope_decremental = '<Nop>',
+          ['af'] = '@function.outer',
+          ['if'] = '@function.inner',
+          ['ac'] = '@class.outer',
+          ['ic'] = '@class.inner',
         },
+        selection_modes = {
+          ['@parameter.outer'] = 'v', -- charwise
+          ['@function.outer'] = 'V', -- linewise
+          ['@class.outer'] = '<c-v>', -- blockwise
+        },
+        include_surrounding_whitespace = true,
       },
-      autotag = { enable = true },
-      textobjects = {
-        select = {
-          enable = true,
-          lookahead = true,
-          keymaps = {
-            ['af'] = '@function.outer',
-            ['if'] = '@function.inner',
-            ['ac'] = '@class.outer',
-            ['ic'] = '@class.inner',
-          },
-          selection_modes = {
-            ['@parameter.outer'] = 'v', -- charwise
-            ['@function.outer'] = 'V', -- linewise
-            ['@class.outer'] = '<c-v>', -- blockwise
-          },
-          include_surrounding_whitespace = true,
+      swap = {
+        enable = true,
+        swap_next = {
+          [']vp'] = '@parameter.inner',
+          [']vm'] = '@function.outer',
+          [']vc'] = '@class.outer',
         },
-        swap = {
-          enable = true,
-          swap_next = {
-            [']vp'] = '@parameter.inner',
-            [']vm'] = '@function.outer',
-            [']vc'] = '@class.outer',
-          },
-          swap_previous = {
-            ['[vp'] = '@parameter.inner',
-            ['[vm'] = '@function.outer',
-            ['[vc'] = '@class.outer',
-          },
-        },
-        move = {
-          enable = true,
-          set_jumps = true,
-          goto_next_start = {
-            [']m'] = '@function.outer',
-            [']]'] = '@class.outer',
-            [']p'] = '@parameter.outer',
-          },
-          goto_next_end = {
-            [']M'] = '@function.outer',
-            [']['] = '@class.outer',
-            [']P'] = '@parameter.outer',
-          },
-          goto_previous_start = {
-            ['[m'] = '@function.outer',
-            ['[['] = '@class.outer',
-            ['[p'] = '@parameter.outer',
-          },
-          goto_previous_end = {
-            ['[M'] = '@function.outer',
-            ['[]'] = '@class.outer',
-            ['[P'] = '@parameter.outer',
-          },
-        },
-        lsp_interop = {
-          enable = true,
-          border = 'none',
-          peek_definition_code = {
-            ['gm'] = '@function.outer',
-            ['g['] = '@class.outer',
-          },
+        swap_previous = {
+          ['[vp'] = '@parameter.inner',
+          ['[vm'] = '@function.outer',
+          ['[vc'] = '@class.outer',
         },
       },
     },
-    config = function(_, opts)
-      require('nvim-treesitter.configs').setup(opts)
-    end,
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter-textobjects',
-      'windwp/nvim-ts-autotag',
-      { 'JoosepAlviste/nvim-ts-context-commentstring', opts = { enable = true, enable_autocmd = false } },
-    },
-  },
-}
+  })
+  require('nvim-ts-autotag').setup()
+  require('ts_context_commentstring').setup({ enable_autocmd = false })
+end
+
+return M

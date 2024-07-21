@@ -1,19 +1,23 @@
-local lazypath = ('%s/lazy/lazy.nvim'):format(vim.fn.stdpath('data'))
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
+local package_path = vim.fn.stdpath('data') .. '/site/'
+local mini_path = package_path .. 'pack/deps/start/mini.nvim'
+if not vim.uv.fs_stat(mini_path) then
+  vim.cmd([[echo "Installing `mini.nvim`" | redraw]])
+  local clone_cmd = {
     'git',
     'clone',
     '--filter=blob:none',
-    'https://github.com/folke/lazy.nvim.git',
-    '--branch=stable',
-    lazypath,
-  })
+    'https://github.com/echasnovski/mini.nvim',
+    mini_path,
+  }
+  vim.fn.system(clone_cmd)
+  vim.cmd([[packadd mini.nvim | helptags ALL]])
+  vim.cmd([[echo "Installed `mini.nvim`" | redraw]])
 end
-vim.opt.rtp:prepend(lazypath)
 
 vim.g.mapleader = ' '
 
-require('lazy').setup('plugins')
+require('mini.deps').setup({ path = { package = package_path } })
+require('plugins')
 require('config')
 
 local theme = require('last-color').recall() or 'minischeme'
