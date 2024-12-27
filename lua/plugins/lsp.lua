@@ -3,10 +3,6 @@ local M = {}
 M.setup = function()
   require('lazydev').setup()
   require('mason').setup()
-  require('mason-null-ls').setup({
-    automatic_installation = true,
-    handlers = {},
-  })
   local mason_lsp = require('mason-lspconfig')
   mason_lsp.setup()
 
@@ -15,17 +11,18 @@ M.setup = function()
     'asm_lsp',
     'clangd',
     'glsl_analyzer',
-    'zls',
     unpack(mason_lsp.get_installed_servers()),
   }
 
   for _, name in ipairs(servers) do
+    if name == 'lua_ls' then
+      goto continue
+    end
     local ok, config = pcall(require, ('config.lsp.servers.%s'):format(name))
     config = ok and config or {}
     require('lspconfig')[name].setup(default_config.with(config))
+    ::continue::
   end
-
-  require('null-ls').setup(default_config)
 end
 
 return M

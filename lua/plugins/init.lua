@@ -1,9 +1,15 @@
 local add = MiniDeps.add
 
--- colorscheme
+-- util
+add({ source = 'nvim-lua/plenary.nvim' })
 add({ source = 'raddari/last-color.nvim' })
-add({ source = 'embark-theme/vim', name = 'embark' })
+add({ source = 'ziglang/zig.vim' })
+add({ source = 'folke/snacks.nvim' })
+
+-- colorscheme
 add({ source = 'bluz71/vim-nightfly-colors', name = 'nightfly' })
+add({ source = 'AlexvZyl/nordic.nvim', name = 'nordic' })
+add({ source = 'EdenEast/nightfox.nvim', name = 'nightfox' })
 
 -- treesitter
 add({
@@ -25,36 +31,26 @@ add({
   depends = {
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig',
-    'jay-babu/mason-null-ls.nvim',
-    'nvimtools/none-ls.nvim',
-    'zeioth/none-ls-autoload.nvim',
     'https://git.sr.ht/~p00f/clangd_extensions.nvim',
     'b0o/SchemaStore.nvim',
   },
 })
 
--- cmp
+-- TODO: consider https://github.com/Saghen/blink.cmp
 add({
   source = 'hrsh7th/nvim-cmp',
   depends = {
     'hrsh7th/cmp-nvim-lsp',
     'dcampos/cmp-snippy',
     'dcampos/nvim-snippy',
-    'honza/vim-snippets',
+    'rafamadriz/friendly-snippets',
   },
 })
 
--- ui
-add({ source = 'levouh/tint.nvim' })
-add({ source = 'stevearc/dressing.nvim' })
-
--- util
-add({ source = 'nvim-lua/plenary.nvim' })
-
 -- config
+require('plugins.snacks').setup()
 require('plugins.colorscheme').setup()
 require('plugins.treesitter').setup()
 require('plugins.mini').setup()
-require('plugins.ui').setup()
 require('plugins.lsp').setup()
 require('plugins.cmp').setup()

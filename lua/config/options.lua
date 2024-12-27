@@ -1,6 +1,7 @@
 local opt = vim.opt
 
 vim.g.zig_fmt_parse_errors = 0
+vim.g.zig_fmt_autosave = 0
 
 opt.breakindent = true -- line wraps have the same level of indentation
 opt.colorcolumn = '+1'
@@ -38,13 +39,13 @@ opt.pumheight = 10 -- maximum number of lines in popup-menu
 opt.relativenumber = true -- show line number relative to current line
 opt.scrolloff = 9 -- minimum number of lines to keep around the cursor
 opt.shiftround = true -- round indent to multiples of 'shiftwidth'
-opt.shiftwidth = 2 -- number of spaces to use for each (auto)indent step
+opt.shiftwidth = 4 -- number of spaces to use for each (auto)indent step
 opt.shortmess:append({ c = true })
 opt.showmode = false -- hide partial command in last line
 opt.sidescrolloff = 9 -- minimum number of columns to keep around the cursor
 opt.signcolumn = 'yes:2' -- always display sign column with 2 spaces
 opt.smartcase = true -- case sensitive search when search term contains an uppercase letter
-opt.softtabstop = 2 -- number of spaces <Tab> counts for
+opt.softtabstop = 4 -- number of spaces <Tab> counts for
 opt.splitbelow = true -- :split puts new window below current
 opt.splitright = true -- :vsplit puts new window to the right
 opt.termguicolors = true -- enable 24-bit RGB color

@@ -9,7 +9,6 @@ M.capabilities = vim.tbl_deep_extend(
 
 M.on_attach = function(client, bufnr)
   local lsp_attach = require('config.lsp.attach')
-  lsp_attach.keymaps(client, bufnr)
   lsp_attach.codelens(client, bufnr)
   lsp_attach.format_on_save(client, bufnr)
   lsp_attach.document_highlights(client, bufnr)

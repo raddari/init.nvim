@@ -6,7 +6,7 @@ M.setup = function()
 
   cmp.setup({
     enabled = function()
-      return vim.api.nvim_buf_get_option(0, 'buftype') ~= 'prompt'
+      return vim.bo[0].buftype ~= 'prompt'
     end,
     snippet = {
       expand = function(args)

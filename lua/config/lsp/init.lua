@@ -2,7 +2,7 @@ vim.diagnostic.config({
   severity_sort = true,
   virtual_text = false,
   signs = function()
-    local box = '⏹'
+    local box = '●'
     local signs = { text = {} }
     for _, diagnostic in ipairs({
       vim.diagnostic.severity.ERROR,
@@ -15,3 +15,10 @@ vim.diagnostic.config({
     return signs
   end,
 })
+
+vim.lsp.config('*', {
+  root_markers = { '.git' },
+})
+
+vim.lsp.enable('zls')
+vim.lsp.enable('lua_ls')

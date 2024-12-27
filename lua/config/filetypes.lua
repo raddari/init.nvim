@@ -1,6 +1,5 @@
 vim.filetype.add({
   extension = {
-    zon = 'zig',
     vert = 'glsl',
     frag = 'glsl',
     asm = 'nasm',

@@ -31,6 +31,9 @@ M.setup = function()
       -- `z` key
       { mode = 'n', keys = 'z' },
       { mode = 'x', keys = 'z' },
+      -- `[` and `]`
+      { mode = 'n', keys = '[' },
+      { mode = 'n', keys = ']' },
     },
     clues = {
       miniclue.gen_clues.builtin_completion(),
@@ -65,6 +68,12 @@ M.setup = function()
   })
   require('mini.fuzzy').setup({})
   require('mini.git').setup({})
+  local hipatterns = require('mini.hipatterns')
+  hipatterns.setup({
+    highlighters = {
+      hex_color = hipatterns.gen_highlighter.hex_color({ style = 'inline' }),
+    },
+  })
   require('mini.icons').setup({})
   require('mini.indentscope').setup({})
   require('mini.jump').setup({})
@@ -72,7 +81,7 @@ M.setup = function()
   require('mini.move').setup({})
   require('mini.notify').setup({})
   require('mini.pairs').setup({})
-  require('mini.pick').setup({})
+  -- require('mini.pick').setup({})
   require('mini.sessions').setup({})
   require('mini.splitjoin').setup({})
   require('mini.statusline').setup({
@@ -83,8 +92,7 @@ M.setup = function()
   vim.notify = require('mini.notify').make_notify()
 
   -- keymaps
-  local map = vim.api.nvim_set_keymap
-  map('n', '<Leader>t', '', {
+  vim.keymap.set('n', '<Leader>t', '', {
     desc = 'File tree',
     callback = function()
       if not MiniFiles.close() then
@@ -92,19 +100,13 @@ M.setup = function()
       end
     end,
   })
-  map('n', '<Leader>ff', '<Cmd>Pick files<CR>', { desc = 'Pick from files' })
-  map('n', '<Leader>fs', '<Cmd>Pick grep_live<CR>', { desc = 'Live grep' })
-  map('n', '<Leader>fb', '<Cmd>Pick buffers<CR>', { desc = 'Pick from buffers' })
-  map('n', '<Leader>fe', '<Cmd>Pick explorer<CR>', { desc = 'File explorer' })
-  map('n', '<Leader>fh', '<Cmd>Pick help<CR>', { desc = 'Search for help pages' })
-  map('n', '<Leader>fd', '<Cmd>Pick diagnostic<CR>', { desc = 'Pick diagnostics' })
-  map('n', '<Leader>f"', '<Cmd>Pick registers<CR>', { desc = 'Show registers' })
-  map('n', '<Leader>fw', '<Cmd>Pick spellsuggest<CR>', { desc = 'Show spelling suggestions' })
-  map('n', '<Leader>fc', '<Cmd>Pick hl_groups<CR>', { desc = 'Show highlight groups' })
-  map('n', '<Leader>fgf', '<Cmd>Pick git_files<CR>', { desc = 'Pick versioned files' })
-  map('n', '<Leader>fgb', '<Cmd>Pick git_branches<CR>', { desc = 'Pick branches' })
-  map('n', '<Leader>fgc', '<Cmd>Pick git_commits<CR>', { desc = 'Pick commits' })
-  map('n', '<Leader>fgh', '<Cmd>Pick git_hunks<CR>', { desc = 'Pick hunks' })
+
+  vim.api.nvim_create_autocmd('User', {
+    pattern = 'MiniFilesActionRename',
+    callback = function(event)
+      Snacks.rename.on_rename_file(event.data.from, event.data.to)
+    end,
+  })
 end
 
 return M
