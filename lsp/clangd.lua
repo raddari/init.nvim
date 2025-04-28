@@ -1,4 +1,4 @@
-local config = {
+return {
   cmd = {
     'clangd',
     '--completion-style=bundled',
@@ -21,5 +21,3 @@ local config = {
     )
   end,
 }
-
-return config

@@ -20,5 +20,9 @@ vim.lsp.config('*', {
   root_markers = { '.git' },
 })
 
-vim.lsp.enable('zls')
+vim.lsp.enable('asm_lsp')
+vim.lsp.enable('clangd')
+vim.lsp.enable('jsonls')
 vim.lsp.enable('lua_ls')
+vim.lsp.enable('neocmake')
+vim.lsp.enable('zls')
